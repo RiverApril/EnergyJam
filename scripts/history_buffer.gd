@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 
 func start_new_state():
 	current_state_index += 1
-	print("start new state ", current_state_index)
+	# print("start new state ", current_state_index)
 	new_state_signal.emit()
 
 func get_current_state_index() -> int:
@@ -34,11 +34,11 @@ func undo():
 	if current_state_index > 0:
 		current_state_index -= 1
 		update_state_signal.emit()
-	print("undo ", current_state_index)
+	# print("undo ", current_state_index)
 
 func reset():
 	current_state_index = 0
 	update_state_signal.emit()
 	current_state_index = -1
 	start_new_state()
-	print("reset ", current_state_index)
+	# print("reset ", current_state_index)

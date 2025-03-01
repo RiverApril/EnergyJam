@@ -4,7 +4,7 @@ class_name Emitter
 
 @export var beam_scene: PackedScene
 
-@export var max_beam_depth: int = 10
+@export var max_beam_depth: int = 20
 @export var max_length: float = 100
 
 var beam_holder: Node
@@ -12,7 +12,7 @@ var needs_update: bool = true
 
 var beam_rgb: int
 # var beam_material: StandardMaterial3D = null
-var beam_material: ShaderMaterial = null
+var beam_materials: Dictionary
 
 var parent: Node3D
 
@@ -40,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 			beam_holder.remove_child(child)
 			child.queue_free()
 
+		# print("create first beam: ", beam_rgb)
 		create_beam(beam_rgb, global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
 	
 
@@ -50,6 +51,8 @@ func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: i
 	
 	if rgb == 0:
 		return
+
+	# print("create beam: ", rgb)
 	
 	var end_position = start_position + direction * max_length
 	var result := cast_ray(start_position, end_position)
@@ -68,15 +71,18 @@ func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: i
 		if collider.has_node("Mirror"):
 			var mirror: Mirror = collider.get_node("Mirror")
 			do_reflect(mirror.reflect_RGB & rgb, collider, plane_position, hit_position, direction, hit_normal, index)
+		
 		if collider.has_node("Transmit"):
 			var transmit: Transmit = collider.get_node("Transmit")
 			create_beam(transmit.allow_RGB & rgb, plane_position, direction, index+1)
+		
 		if collider.has_node("Prism"):
 			do_refract(rgb, collider, hit_position, direction, hit_normal, index)
+		
 		if collider.has_node("Glow"):
 			if collider.collision_layer & 2:
 				var glow: Glow = collider.get_node("Glow")
-				glow.turn_on(beam_rgb)
+				glow.turn_on(rgb)
 	
 	var center_position: Vector3 = (start_position + hit_position) / 2.0
 	var length: float = (start_position - hit_position).length()
@@ -87,13 +93,11 @@ func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: i
 		new_beam.look_at_from_position(center_position, hit_position, Vector3.UP)
 
 		var mesh_instance: MeshInstance3D = new_beam.get_node("MeshInstance3D")
-		if beam_material == null:
-			# var material: StandardMaterial3D = mesh_instance.get_active_material(0)
+		if !beam_materials.has(rgb):
 			var material: ShaderMaterial = mesh_instance.get_active_material(0)
-			beam_material = material.duplicate()
-		# beam_material.albedo_color = Globals.laser_display_colors[beam_rgb]
-		beam_material.set_shader_parameter("albedo_color", Globals.laser_display_colors[beam_rgb])
-		mesh_instance.material_override = beam_material
+			beam_materials[rgb] = material.duplicate()
+			beam_materials[rgb].set_shader_parameter("albedo_color", Globals.laser_display_colors[rgb])
+		mesh_instance.material_override = beam_materials[rgb]
 
 		beam_holder.add_child(new_beam)
 		new_beam.owner = beam_holder
