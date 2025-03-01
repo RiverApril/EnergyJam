@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8kt6d42bd3fw"]
+
+[ext_resource type="AudioStream" uid="uid://dlekgj7h38q7r" path="res://sounds/OpticsIdea.mp3" id="1_e7aki"]
+
+[node name="Music" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_e7aki")
+autoplay = true
+parameters/looping = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_nlcip"]
 [ext_resource type="Script" path="res://scripts/level_control.gd" id="2_ssoik"]
-[ext_resource type="AudioStream" uid="uid://dlekgj7h38q7r" path="res://sounds/OpticsIdea.mp3" id="3_mfm6i"]
+[ext_resource type="Resource" uid="uid://dw5wupcbeelw1" path="res://datas/all_levels.tres" id="3_1c1fy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
 sky_top_color = Color(0.655778, 0.765712, 1, 1)
@@ -47,9 +47,6 @@ skeleton = NodePath("../..")
 
 [node name="LevelControl" type="Node" parent="."]
 script = ExtResource("2_ssoik")
-levels = [NodePath("")]
+all_levels = ExtResource("3_1c1fy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_mfm6i")
-autoplay = true
-parameters/looping = true
+[node name="WinCondition" type="Node" parent="."]

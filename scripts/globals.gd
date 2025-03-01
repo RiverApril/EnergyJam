@@ -2,6 +2,8 @@ extends Node
 
 const default_block_move_speed: float = 6.0
 
+var current_level_index = 0
+
 var laser_display_colors: Array = [
     # RGB
     # Color.hex(0x2a2a2a_ff), # 000 black
@@ -22,3 +24,9 @@ var laser_display_colors: Array = [
     Color.hex(0xffff00_ff), # 110 yellow
     Color.hex(0xffffff_ff), # 111 white
 ]
+
+func _ready():
+    var music_packed_scene: PackedScene = load("res://objects/music.tscn")
+    var music_node = music_packed_scene.instantiate()
+    add_child(music_node)
+    music_node.owner = self
