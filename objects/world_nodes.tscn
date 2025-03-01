@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://buxx8bxc0y6a8"]
+[gd_scene load_steps=9 format=3 uid="uid://buxx8bxc0y6a8"]
 
 [ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_nlcip"]
 [ext_resource type="Script" path="res://scripts/level_control.gd" id="2_ssoik"]
+[ext_resource type="AudioStream" uid="uid://dlekgj7h38q7r" path="res://sounds/OpticsIdea.mp3" id="3_mfm6i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
 sky_top_color = Color(0.655778, 0.765712, 1, 1)
@@ -47,3 +48,8 @@ skeleton = NodePath("../..")
 [node name="LevelControl" type="Node" parent="."]
 script = ExtResource("2_ssoik")
 levels = [NodePath("")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mfm6i")
+autoplay = true
+parameters/looping = true
