@@ -36,8 +36,9 @@ func _process(delta: float):
 
 
 func on_something_moved_signal():
-	timer = TURN_OFF_TIME
-	current_RGB = 0
+	if timer == 0.0:
+		timer = TURN_OFF_TIME
+		current_RGB = 0
 
 func turn_on(rgb: int):
 	timer = 0.0
