@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode blend_add;
 
 uniform sampler3D noise_texture : source_color;
 uniform vec3 albedo_color : source_color;
