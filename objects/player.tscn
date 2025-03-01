@@ -12,6 +12,7 @@ size = Vector3(0.75, 0.75, 0.75)
 size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Player Block" type="StaticBody3D"]
+script = ExtResource("2_x2xp8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_uwu1i")
@@ -19,9 +20,6 @@ mesh = SubResource("BoxMesh_uwu1i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tnels")
 
-[node name="Movable" type="Node" parent="."]
-script = ExtResource("2_x2xp8")
-
 [node name="Player" type="Node" parent="." node_paths=PackedStringArray("movable")]
 script = ExtResource("1_1y18p")
-movable = NodePath("../Movable")
+movable = NodePath("..")

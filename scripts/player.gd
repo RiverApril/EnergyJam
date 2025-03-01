@@ -7,10 +7,8 @@ func _ready() -> void:
 
 func on_ran_into_something_signal(collision: KinematicCollision3D, direction: Vector3) -> void:
 	var other = collision.get_collider()
-	for child in other.get_children():
-		if child is Movable:
-			var other_movable: Movable = child
-			other_movable.push(direction)
+	if other is Movable:
+		other.push(direction)
 
 
 func _physics_process(_delta: float) -> void:

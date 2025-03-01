@@ -1,9 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dklh48h2iuehd"]
+[gd_scene load_steps=7 format=3 uid="uid://dklh48h2iuehd"]
 
-[ext_resource type="Material" uid="uid://bjv8p0fnq141r" path="res://materials/beam_material.tres" id="1_uep0v"]
+[ext_resource type="Shader" path="res://materials/fog_laser.gdshader" id="1_840vl"]
+
+[sub_resource type="Gradient" id="Gradient_0k8oi"]
+offsets = PackedFloat32Array(0.169863, 0.70137)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w8prv"]
+frequency = 0.1309
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_35ecg"]
+seamless = true
+seamless_blend_skirt = 0.455
+color_ramp = SubResource("Gradient_0k8oi")
+noise = SubResource("FastNoiseLite_w8prv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wspik"]
+render_priority = 0
+shader = ExtResource("1_840vl")
+shader_parameter/albedo_color = Color(0, 0, 1, 1)
+shader_parameter/wind = Vector3(0.005, 0.008, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture3D_35ecg")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p0g1f"]
-material = ExtResource("1_uep0v")
+material = SubResource("ShaderMaterial_wspik")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 1.0

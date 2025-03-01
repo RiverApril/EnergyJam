@@ -6,12 +6,15 @@
 [ext_resource type="Script" path="res://scripts/movable.gd" id="4_agwwu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
+size = Vector3(0.75, 0.75, 0.75)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hip80"]
 material = ExtResource("1_8ebb6")
+size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Glow Block" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+collision_layer = 3
+script = ExtResource("4_agwwu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_prb83")
@@ -24,6 +27,3 @@ script = ExtResource("2_iokxy")
 mesh_instance = NodePath("../MeshInstance3D")
 off_material = ExtResource("3_1w1ir")
 on_material = ExtResource("1_8ebb6")
-
-[node name="Movable" type="Node" parent="."]
-script = ExtResource("4_agwwu")

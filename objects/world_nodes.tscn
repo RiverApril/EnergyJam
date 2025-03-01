@@ -46,3 +46,4 @@ skeleton = NodePath("../..")
 
 [node name="LevelControl" type="Node" parent="."]
 script = ExtResource("2_ssoik")
+levels = [NodePath("")]
