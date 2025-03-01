@@ -1,17 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnnuj7j4mqu3n"]
+[gd_scene load_steps=8 format=3 uid="uid://bnnuj7j4mqu3n"]
 
-[ext_resource type="Material" uid="uid://dsuqswa503vte" path="res://materials/on_material.tres" id="1_8ebb6"]
+[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_15nlk"]
 [ext_resource type="Script" path="res://scripts/glow.gd" id="2_iokxy"]
-[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="3_1w1ir"]
+[ext_resource type="Material" uid="uid://rq3xekywog2m" path="res://materials/glow_squircle_material.tres" id="3_43ibw"]
 [ext_resource type="Script" path="res://scripts/movable.gd" id="4_agwwu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hip80"]
-material = ExtResource("1_8ebb6")
+material = ExtResource("2_15nlk")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ixml"]
+material = ExtResource("3_43ibw")
+size = Vector3(1.5, 1.5, 1.5)
 
 [node name="Glow Block" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+collision_layer = 3
+script = ExtResource("4_agwwu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_prb83")
@@ -19,11 +26,10 @@ shape = SubResource("BoxShape3D_prb83")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_hip80")
 
-[node name="Glow" type="Node" parent="." node_paths=PackedStringArray("mesh_instance")]
-script = ExtResource("2_iokxy")
-mesh_instance = NodePath("../MeshInstance3D")
-off_material = ExtResource("3_1w1ir")
-on_material = ExtResource("1_8ebb6")
+[node name="GlowMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3ixml")
 
-[node name="Movable" type="Node" parent="."]
-script = ExtResource("4_agwwu")
+[node name="Glow" type="Node" parent="." node_paths=PackedStringArray("base_mesh_instance", "glow_mesh_instance")]
+script = ExtResource("2_iokxy")
+base_mesh_instance = NodePath("../MeshInstance3D")
+glow_mesh_instance = NodePath("../GlowMesh")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://c38gfk35326dg"]
+
+[ext_resource type="Script" path="res://scripts/movable.gd" id="1_ksb0o"]
+[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_01101"]
+[ext_resource type="Material" uid="uid://rq3xekywog2m" path="res://materials/glow_squircle_material.tres" id="3_11jae"]
+[ext_resource type="Script" path="res://scripts/glow.gd" id="3_ws7wy"]
+[ext_resource type="Script" path="res://scripts/transmit.gd" id="5_lp1r7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hip80"]
+material = ExtResource("2_01101")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wh4b"]
+material = ExtResource("3_11jae")
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Transmit Glow Block" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_ksb0o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_prb83")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hip80")
+
+[node name="GlowMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1wh4b")
+
+[node name="Glow" type="Node" parent="." node_paths=PackedStringArray("base_mesh_instance", "glow_mesh_instance")]
+script = ExtResource("3_ws7wy")
+base_mesh_instance = NodePath("../MeshInstance3D")
+glow_mesh_instance = NodePath("../GlowMesh")
+
+[node name="Transmit" type="Node" parent="."]
+script = ExtResource("5_lp1r7")

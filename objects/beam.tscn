@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dklh48h2iuehd"]
 
-[ext_resource type="Material" uid="uid://bjv8p0fnq141r" path="res://materials/beam_material.tres" id="1_uep0v"]
+[ext_resource type="Material" uid="uid://c62cewuuemkjk" path="res://materials/beam_material.tres" id="1_jyqwy"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p0g1f"]
-material = ExtResource("1_uep0v")
+material = ExtResource("1_jyqwy")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 1.0

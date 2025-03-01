@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://rq3xekywog2m"]
+
+[ext_resource type="Shader" path="res://materials/glow.gdshader" id="1_fepwj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fepwj")
+shader_parameter/albedo_color = Color(0, 1, 0, 1)
+shader_parameter/pulse_speed = 2.0
+shader_parameter/distance_power = 4.0
+shader_parameter/solid_radius = 0.25
+shader_parameter/fade_raidus = 0.5
+shader_parameter/glow_min = 0.5

@@ -1,6 +1,6 @@
 extends Node
 
-@export var levels: Array
+@export var levels: Array # PackedScene Array
 
 func _input(event):
 	

@@ -1,15 +1,18 @@
 extends Node3D
 
+class_name Emitter
+
 @export var beam_scene: PackedScene
 
-@export var max_beam_depth: int = 10
+@export var max_beam_depth: int = 20
 @export var max_length: float = 100
 
 var beam_holder: Node
 var needs_update: bool = true
 
-var beam_color: Color
-var beam_material: StandardMaterial3D = null
+var beam_rgb: int
+# var beam_material: StandardMaterial3D = null
+var beam_materials: Dictionary
 
 var parent: Node3D
 
@@ -19,7 +22,10 @@ const epsilon = 0.01
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parent = get_parent()
-	beam_color = parent.get_meta("beam_color")
+	beam_rgb = (0b100 if parent.get_meta("beam_red", false) else 0)\
+		| (0b010 if parent.get_meta("beam_green", false) else 0)\
+		| (0b001 if parent.get_meta("beam_blue", false) else 0)
+
 	beam_holder = get_node("Beams")
 	EventBus.something_moved_signal.connect(on_something_moved_signal)
 
@@ -34,13 +40,19 @@ func _physics_process(_delta: float) -> void:
 			beam_holder.remove_child(child)
 			child.queue_free()
 
-		create_beam(global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
+		# print("create first beam: ", beam_rgb)
+		create_beam(beam_rgb, global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
 	
 
 
-func create_beam(start_position: Vector3, direction: Vector3, index: int) -> void:
+func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: int) -> void:
 	if index > max_beam_depth:
 		return
+	
+	if rgb == 0:
+		return
+
+	# print("create beam: ", rgb)
 	
 	var end_position = start_position + direction * max_length
 	var result := cast_ray(start_position, end_position)
@@ -52,14 +64,25 @@ func create_beam(start_position: Vector3, direction: Vector3, index: int) -> voi
 		var hit_normal: Vector3 = result["normal"]
 
 		var collider = result["collider"]
+
+		# recompute hit point so that it is on the center plane of the mirror so offsets dont propagate
+		var plane_position = ray_plane_hit(start_position, direction, hit_normal, -collider.global_position.dot(hit_normal))
 		
 		if collider.has_node("Mirror"):
-			do_reflect(collider, hit_position, direction, hit_normal, index)
+			var mirror: Mirror = collider.get_node("Mirror")
+			do_reflect(mirror.reflect_RGB & rgb, collider, plane_position, hit_position, direction, hit_normal, index)
+		
+		if collider.has_node("Transmit"):
+			var transmit: Transmit = collider.get_node("Transmit")
+			create_beam(transmit.allow_RGB & rgb, plane_position, direction, index+1)
+		
 		if collider.has_node("Prism"):
-			do_refract(collider, hit_position, direction, hit_normal, index)
+			do_refract(rgb, collider, hit_position, direction, hit_normal, index)
+		
 		if collider.has_node("Glow"):
-			var glow: Glow = collider.get_node("Glow")
-			glow.turn_on(beam_color)
+			if collider.collision_layer & 2:
+				var glow: Glow = collider.get_node("Glow")
+				glow.turn_on(rgb)
 	
 	var center_position: Vector3 = (start_position + hit_position) / 2.0
 	var length: float = (start_position - hit_position).length()
@@ -70,35 +93,31 @@ func create_beam(start_position: Vector3, direction: Vector3, index: int) -> voi
 		new_beam.look_at_from_position(center_position, hit_position, Vector3.UP)
 
 		var mesh_instance: MeshInstance3D = new_beam.get_node("MeshInstance3D")
-		if beam_material == null:
-			var material: StandardMaterial3D = mesh_instance.get_active_material(0)
-			beam_material = material.duplicate()
-			beam_material.albedo_color = beam_color
-		mesh_instance.material_override = beam_material
+		if !beam_materials.has(rgb):
+			var material: ShaderMaterial = mesh_instance.get_active_material(0)
+			beam_materials[rgb] = material.duplicate()
+			beam_materials[rgb].set_shader_parameter("albedo_color", Globals.laser_display_colors[rgb])
+		mesh_instance.material_override = beam_materials[rgb]
 
 		beam_holder.add_child(new_beam)
 		new_beam.owner = beam_holder
 
-func do_reflect(collider, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
+func do_reflect(rgb: int, _collider, plane_position: Vector3, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
 	# var mirror: Mirror = collider.get_node("Mirror")
 	# print("mirror")
 	# var mirror_normal: Vector3 = (collider.transform.basis * mirror.reflection_normal).normalized()
 	# var mirror_normal: Vector3 = result["normal"]
 	var mirror_normal = hit_normal
-	var mirror_position = collider.global_position
+	# var mirror_position = collider.global_position
 	# realign to center
-	# var hit_position = mirror_position;
-	# # recompute hit point so that it is on the center plane of the mirror so offsets dont propagate
-	# hit_position = ray_plane_hit(start_position, direction, mirror_normal, -mirror_position.dot(mirror_normal))
-	
 
 	var mirror_dot = mirror_normal.dot(direction)
 	if mirror_dot != 0:
 		var outgoing_direction = direction - 2 * mirror_dot * mirror_normal
 
-		create_beam(mirror_position, outgoing_direction, index+1)
-	
-func do_refract(collider, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
+		create_beam(rgb, plane_position, outgoing_direction, index+1)
+
+func do_refract(rgb: int, collider, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
 	var prism: Prism = collider.get_node("Prism")
 
 	var prism_position = collider.global_position
@@ -137,7 +156,7 @@ func do_refract(collider, _hit_position: Vector3, direction: Vector3, hit_normal
 				# print("outgoing_direction: ")
 				# print(outgoing_direction)
 
-				create_beam(prism_position, outgoing_direction, index+1)
+				create_beam(rgb, prism_position, outgoing_direction, index+1)
 
 
 # https://physics.stackexchange.com/questions/435512/snells-law-in-vector-form
@@ -164,6 +183,7 @@ func cast_ray(origin: Vector3, end: Vector3) -> Dictionary:
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.exclude = [self]
 	query.collide_with_areas = true
+	query.collision_mask = 3
 
 	var result = space_state.intersect_ray(query)
 

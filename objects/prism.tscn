@@ -10,6 +10,7 @@ size = Vector3(0.5, 0.5, 1)
 points = PackedVector3Array(0.25, 0.5, -0.25, -0.25, 0.5, -0.25, 0, 0.5, 0.25, 0.25, -0.5, -0.25, -0.25, -0.5, -0.25, 0, -0.5, 0.25)
 
 [node name="Prism Block" type="StaticBody3D"]
+script = ExtResource("1_ieub7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -17,9 +18,6 @@ mesh = SubResource("PrismMesh_ct7im")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_a6ivd")
-
-[node name="Movable" type="Node" parent="."]
-script = ExtResource("1_ieub7")
 
 [node name="Prism" type="Node3D" parent="." node_paths=PackedStringArray("mesh_insatance")]
 script = ExtResource("2_g14dg")
