@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/movable.gd" id="1_y6xqt"]
 [ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="2_plisi"]
 [ext_resource type="Script" path="res://scripts/mirror.gd" id="3_d1qag"]
-[ext_resource type="Script" path="res://scripts/trasmit.gd" id="3_dwf2j"]
+[ext_resource type="Script" path="res://scripts/transmit.gd" id="3_dwf2j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkvss"]
 albedo_color = Color(0.710047, 0.710047, 0.710047, 1)

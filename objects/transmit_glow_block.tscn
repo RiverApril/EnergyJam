@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dsuqswa503vte" path="res://materials/on_material.tres" id="2_30cs1"]
 [ext_resource type="Script" path="res://scripts/glow.gd" id="3_ws7wy"]
 [ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="4_wutqu"]
-[ext_resource type="Script" path="res://scripts/trasmit.gd" id="5_lp1r7"]
+[ext_resource type="Script" path="res://scripts/transmit.gd" id="5_lp1r7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
 size = Vector3(0.75, 0.75, 0.75)

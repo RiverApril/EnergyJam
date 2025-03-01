@@ -40,13 +40,15 @@ func _physics_process(_delta: float) -> void:
 			beam_holder.remove_child(child)
 			child.queue_free()
 
-		if beam_rgb > 0:
-			create_beam(global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
+		create_beam(beam_rgb, global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
 	
 
 
-func create_beam(start_position: Vector3, direction: Vector3, index: int) -> void:
+func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: int) -> void:
 	if index > max_beam_depth:
+		return
+	
+	if rgb == 0:
 		return
 	
 	var end_position = start_position + direction * max_length
@@ -64,11 +66,13 @@ func create_beam(start_position: Vector3, direction: Vector3, index: int) -> voi
 		var plane_position = ray_plane_hit(start_position, direction, hit_normal, -collider.global_position.dot(hit_normal))
 		
 		if collider.has_node("Mirror"):
-			do_reflect(collider, plane_position, hit_position, direction, hit_normal, index)
+			var mirror: Mirror = collider.get_node("Mirror")
+			do_reflect(mirror.reflect_RGB & rgb, collider, plane_position, hit_position, direction, hit_normal, index)
 		if collider.has_node("Transmit"):
-			create_beam(plane_position, direction, index+1)
+			var transmit: Transmit = collider.get_node("Transmit")
+			create_beam(transmit.allow_RGB & rgb, plane_position, direction, index+1)
 		if collider.has_node("Prism"):
-			do_refract(collider, hit_position, direction, hit_normal, index)
+			do_refract(rgb, collider, hit_position, direction, hit_normal, index)
 		if collider.has_node("Glow"):
 			if collider.collision_layer & 2:
 				var glow: Glow = collider.get_node("Glow")
@@ -94,7 +98,7 @@ func create_beam(start_position: Vector3, direction: Vector3, index: int) -> voi
 		beam_holder.add_child(new_beam)
 		new_beam.owner = beam_holder
 
-func do_reflect(_collider, plane_position: Vector3, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
+func do_reflect(rgb: int, _collider, plane_position: Vector3, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
 	# var mirror: Mirror = collider.get_node("Mirror")
 	# print("mirror")
 	# var mirror_normal: Vector3 = (collider.transform.basis * mirror.reflection_normal).normalized()
@@ -107,9 +111,9 @@ func do_reflect(_collider, plane_position: Vector3, _hit_position: Vector3, dire
 	if mirror_dot != 0:
 		var outgoing_direction = direction - 2 * mirror_dot * mirror_normal
 
-		create_beam(plane_position, outgoing_direction, index+1)
+		create_beam(rgb, plane_position, outgoing_direction, index+1)
 
-func do_refract(collider, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
+func do_refract(rgb: int, collider, _hit_position: Vector3, direction: Vector3, hit_normal: Vector3, index: int) -> void:
 	var prism: Prism = collider.get_node("Prism")
 
 	var prism_position = collider.global_position
@@ -148,7 +152,7 @@ func do_refract(collider, _hit_position: Vector3, direction: Vector3, hit_normal
 				# print("outgoing_direction: ")
 				# print(outgoing_direction)
 
-				create_beam(prism_position, outgoing_direction, index+1)
+				create_beam(rgb, prism_position, outgoing_direction, index+1)
 
 
 # https://physics.stackexchange.com/questions/435512/snells-law-in-vector-form

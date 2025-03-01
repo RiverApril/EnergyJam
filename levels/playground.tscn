@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3rgriamiuxgj"]
+[gd_scene load_steps=12 format=3 uid="uid://b3rgriamiuxgj"]
 
 [ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_mlhc4"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_xd8m3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="6_nrulv"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="7_adoke"]
 [ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="10_wea26"]
+[ext_resource type="PackedScene" uid="uid://dthk2bvne4lc0" path="res://objects/filter.tscn" id="11_io5ok"]
 [ext_resource type="PackedScene" uid="uid://c38gfk35326dg" path="res://objects/transmit_glow_block.tscn" id="15_e2xa4"]
 
 [node name="Node3D" type="Node3D"]
@@ -31,7 +32,7 @@ metadata/beam_red = false
 metadata/beam_green = true
 
 [node name="Mirror" parent="." instance=ExtResource("3_6f0be")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 0, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 0, 1)
 
 [node name="Mirror2" parent="." instance=ExtResource("3_6f0be")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4, 0, -3)
@@ -55,7 +56,7 @@ transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2
 transform = Transform3D(0.382684, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382684, -6, 0, 4)
 
 [node name="Mirror9" parent="." instance=ExtResource("3_6f0be")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
 
 [node name="Mirror10" parent="." instance=ExtResource("3_6f0be")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -3)
@@ -78,3 +79,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 [node name="Combiner" parent="." instance=ExtResource("10_wea26")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
 metadata/test = Color(0.803287, 0.340827, 1, 1)
+
+[node name="Splitter2" parent="." instance=ExtResource("6_bq0w0")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1, 0, -3)
+
+[node name="Filter" parent="." instance=ExtResource("11_io5ok")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -11, 0, 0)
