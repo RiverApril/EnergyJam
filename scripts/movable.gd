@@ -10,9 +10,41 @@ var is_moving: bool = false
 var target_position: Vector3
 var previous_position: Vector3
 
+var state_history: Dictionary
+
 func _ready() -> void:
 	previous_position = position
 	target_position = position
+	HistoryBuffer.update_state_signal.connect(on_update_state_signal)
+	HistoryBuffer.new_state_signal.connect(on_new_state_signal)
+
+	save_state(HistoryBuffer.get_current_state_index())
+
+func on_update_state_signal() -> void:
+	var new_state_index = HistoryBuffer.get_current_state_index()
+	load_state(new_state_index)
+
+func on_new_state_signal() -> void:
+	if !state_history.has(0):
+		save_state(0)
+	save_state(HistoryBuffer.get_current_state_index())
+
+func load_state(index: int):
+	if !state_history.has(index):
+		return
+	var new_state = state_history[index];
+	position = new_state["position"]
+	target_position = position
+	previous_position = position
+
+	EventBus.something_moved_signal.emit()
+
+func save_state(index: int):
+	state_history[index] = {
+		"position": position
+	}
+	# print("saved: ", index)
+
 
 func push(direction: Vector3) -> bool:
 	if !is_moving and !direction.is_zero_approx():
@@ -39,3 +71,4 @@ func _physics_process(delta: float) -> void:
 		position = target_position
 		is_moving = false
 		EventBus.something_moved_signal.emit()
+		save_state(HistoryBuffer.get_current_state_index())

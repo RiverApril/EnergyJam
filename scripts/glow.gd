@@ -47,6 +47,6 @@ func turn_on(rgb: int):
 
 func update_emitter_child():
 	if emitter_child != null:
-		print(current_RGB)
+		# print(current_RGB)
 		emitter_child.beam_rgb = current_RGB
 		emitter_child.needs_update = true
