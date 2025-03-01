@@ -1,14 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://0h5dr3rsftd4"]
 
 [ext_resource type="Script" path="res://scripts/mirror.gd" id="1_abdlj"]
+[ext_resource type="Material" uid="uid://b7s62xo0dsx35" path="res://materials/mirror_material.tres" id="2_p4dfj"]
 [ext_resource type="Script" path="res://scripts/movable.gd" id="2_pp7xd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggiyc"]
-albedo_color = Color(0.710047, 0.710047, 0.710047, 1)
-roughness = 0.1
-
 [sub_resource type="BoxMesh" id="BoxMesh_68pfo"]
-material = SubResource("StandardMaterial3D_ggiyc")
+material = ExtResource("2_p4dfj")
 size = Vector3(0.1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]

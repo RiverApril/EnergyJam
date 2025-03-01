@@ -1,27 +1,35 @@
-[gd_scene load_steps=11 format=3 uid="uid://wp2nd16mvwmg"]
+[gd_scene load_steps=13 format=3 uid="uid://wp2nd16mvwmg"]
 
 [ext_resource type="Script" path="res://scripts/movable.gd" id="1_xat77"]
+[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_batp2"]
 [ext_resource type="Script" path="res://scripts/glow.gd" id="2_r7nu4"]
-[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="3_mj0ve"]
-[ext_resource type="Material" uid="uid://dsuqswa503vte" path="res://materials/on_material.tres" id="4_p1ovs"]
+[ext_resource type="Material" uid="uid://chtxl0prnn0h7" path="res://materials/glow_circle_material.tres" id="2_v782e"]
+[ext_resource type="Material" uid="uid://c6cv6k87s5djh" path="res://materials/emitter_material.tres" id="2_wrtnu"]
 [ext_resource type="Script" path="res://scripts/emitter.gd" id="5_qqi5m"]
 [ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/beam.tscn" id="6_nf0dr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mllb7"]
-top_radius = 0.25
-bottom_radius = 0.25
+material = ExtResource("2_wrtnu")
+top_radius = 0.125
+bottom_radius = 0.125
 height = 0.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h4xn7"]
-height = 0.625
-radius = 0.25
+height = 0.5
+radius = 0.125
 
 [sub_resource type="SphereMesh" id="SphereMesh_4rr7s"]
-radius = 0.375
-height = 0.75
+material = ExtResource("2_batp2")
+radius = 0.25
+height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hgiph"]
-radius = 0.375
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_ok8vk"]
+material = ExtResource("2_v782e")
+radius = 1.0
+height = 2.0
 
 [node name="Combiner" type="StaticBody3D"]
 script = ExtResource("1_xat77")
@@ -31,30 +39,33 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_mllb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.062)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.125)
 shape = SubResource("CylinderShape3D_h4xn7")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Combiner Glow Orb" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="Sphere" type="MeshInstance3D" parent="Area3D"]
+[node name="Sphere" type="MeshInstance3D" parent="Combiner Glow Orb"]
 mesh = SubResource("SphereMesh_4rr7s")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Combiner Glow Orb"]
 shape = SubResource("SphereShape3D_hgiph")
 
-[node name="Glow" type="Node3D" parent="Area3D" node_paths=PackedStringArray("mesh_instance")]
-script = ExtResource("2_r7nu4")
-mesh_instance = NodePath("../Sphere")
-off_material = ExtResource("3_mj0ve")
-on_material = ExtResource("4_p1ovs")
+[node name="GlowMesh" type="MeshInstance3D" parent="Combiner Glow Orb"]
+mesh = SubResource("SphereMesh_ok8vk")
+skeleton = NodePath("../CollisionShape3D")
 
-[node name="Emitter" type="Node3D" parent="Area3D/Glow"]
+[node name="Glow" type="Node3D" parent="Combiner Glow Orb" node_paths=PackedStringArray("base_mesh_instance", "glow_mesh_instance")]
+script = ExtResource("2_r7nu4")
+base_mesh_instance = NodePath("../Sphere")
+glow_mesh_instance = NodePath("../GlowMesh")
+
+[node name="Emitter" type="Node3D" parent="Combiner Glow Orb/Glow"]
 script = ExtResource("5_qqi5m")
 beam_scene = ExtResource("6_nf0dr")
 
-[node name="Beams" type="Node" parent="Area3D/Glow/Emitter"]
+[node name="Beams" type="Node" parent="Combiner Glow Orb/Glow/Emitter"]

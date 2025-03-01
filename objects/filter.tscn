@@ -1,13 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://dthk2bvne4lc0"]
 
 [ext_resource type="Script" path="res://scripts/movable.gd" id="1_agh2x"]
+[ext_resource type="Material" uid="uid://b7s62xo0dsx35" path="res://materials/mirror_material.tres" id="2_j34rb"]
 [ext_resource type="Script" path="res://scripts/transmit.gd" id="2_vamcj"]
 [ext_resource type="Script" path="res://scripts/mirror.gd" id="3_fg31l"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3gys"]
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_x2t8e"]
-material = SubResource("StandardMaterial3D_v3gys")
+material = ExtResource("2_j34rb")
 height = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]
