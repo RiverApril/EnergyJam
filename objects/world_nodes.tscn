@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://buxx8bxc0y6a8"]
+
+[ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_nlcip"]
+[ext_resource type="Script" path="res://scripts/level_control.gd" id="2_ssoik"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
+sky_top_color = Color(0.655778, 0.765712, 1, 1)
+sky_horizon_color = Color(1, 0.685292, 0.575142, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_n3dt3"]
+sky_material = SubResource("ProceduralSkyMaterial_jq2it")
+
+[sub_resource type="Environment" id="Environment_lmp3d"]
+sky = SubResource("Sky_n3dt3")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rahd7"]
+albedo_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+albedo_texture = ExtResource("1_nlcip")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ce01x"]
+material = SubResource("StandardMaterial3D_rahd7")
+size = Vector2(40, 40)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lmp3d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -0.12941, -0.224144, 0.258819, 0.482963, 0.836516, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+projection = 1
+size = 20.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_ce01x")
+skeleton = NodePath("../..")
+
+[node name="LevelControl" type="Node" parent="."]
+script = ExtResource("2_ssoik")

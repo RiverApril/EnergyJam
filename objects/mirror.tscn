@@ -25,7 +25,6 @@ shape = SubResource("BoxShape3D_wudyr")
 
 [node name="Movable" type="Node" parent="."]
 script = ExtResource("2_pp7xd")
-move_speed = 5.0
 
 [node name="Mirror" type="Node" parent="."]
 script = ExtResource("1_abdlj")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3rgriamiuxgj"]
+
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_mlhc4"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_xd8m3"]
+[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_6f0be"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_ffx2f"]
+[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="5_17s4d"]
+[ext_resource type="PackedScene" uid="uid://c8d0jk1h1bh0r" path="res://objects/splitter.tscn" id="6_bq0w0"]
+[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="6_nrulv"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="7_adoke"]
+[ext_resource type="Script" path="res://scripts/spinner.gd" id="7_xb55c"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_mlhc4")]
+
+[node name="Player" parent="." instance=ExtResource("2_xd8m3")]
+
+[node name="Emitter" parent="." instance=ExtResource("4_ffx2f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+metadata/beam_color = Color(0.316048, 0.66952, 1, 1)
+
+[node name="Emitter2" parent="." instance=ExtResource("4_ffx2f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, 4)
+
+[node name="Emitter3" parent="." instance=ExtResource("4_ffx2f")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, 7)
+metadata/beam_color = Color(0, 0.850407, 0.279742, 1)
+
+[node name="Mirror" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 0, 0)
+
+[node name="Mirror2" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4, 0, -3)
+
+[node name="Mirror3" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 0, -6)
+
+[node name="Mirror4" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5, 0, -6)
+
+[node name="Mirror5" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.382684, 0, -0.92388, 0, 1, 0, 0.92388, 0, 0.382684, 0, 0, 4)
+
+[node name="Mirror6" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, -4, 0, 4)
+
+[node name="Mirror7" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2, 0, 4)
+
+[node name="Mirror8" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(0.382684, 0, 0.92388, 0, 1, 0, -0.92388, 0, 0.382684, -6, 0, 4)
+
+[node name="Mirror9" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="Mirror10" parent="." instance=ExtResource("3_6f0be")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -3)
+
+[node name="Block" parent="." instance=ExtResource("6_nrulv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+
+[node name="Splitter" parent="." instance=ExtResource("6_bq0w0")]
+
+[node name="Node" type="Node" parent="Splitter" node_paths=PackedStringArray("target")]
+script = ExtResource("7_xb55c")
+target = NodePath("..")
+angular_velocity = Vector3(0, 1, 0)
+
+[node name="Glow Block" parent="." instance=ExtResource("7_adoke")]
+
+[node name="Wall" parent="." instance=ExtResource("5_17s4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)

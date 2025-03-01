@@ -25,7 +25,5 @@ script = ExtResource("3_suqlm")
 [node name="Emitter" type="Node3D" parent="."]
 script = ExtResource("1_jfne6")
 beam_scene = ExtResource("2_o5h2k")
-max_beam_depth = null
-max_length = null
 
 [node name="Beams" type="Node" parent="Emitter"]
