@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3rgriamiuxgj"]
+[gd_scene load_steps=18 format=3 uid="uid://b3rgriamiuxgj"]
 
 [ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_gw5mv"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="1_kuxpl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/glow.gd" id="6_iyo05"]
 [ext_resource type="Script" path="res://scripts/spinner.gd" id="6_vheie"]
 [ext_resource type="Material" uid="uid://dsuqswa503vte" path="res://materials/on_material.tres" id="8_3wg5y"]
+[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="10_fs3bd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
 sky_top_color = Color(0.655778, 0.765712, 1, 1)
@@ -122,3 +123,6 @@ script = ExtResource("6_iyo05")
 mesh_instance = NodePath("../MeshInstance3D")
 off_material = ExtResource("6_7ebnx")
 on_material = ExtResource("8_3wg5y")
+
+[node name="Block" parent="." instance=ExtResource("10_fs3bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.0448074, 2.29546)
