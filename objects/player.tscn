@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://wdtsu7b21k3j"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_1y18p"]
+[ext_resource type="Material" uid="uid://d0dq33ntoi6lg" path="res://materials/player_material.tres" id="1_5f8n1"]
+[ext_resource type="Script" path="res://scripts/movable.gd" id="2_x2xp8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uwu1i"]
+material = ExtResource("1_5f8n1")
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnels"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[node name="Player Block" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_uwu1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tnels")
+
+[node name="Movable" type="Node" parent="."]
+script = ExtResource("2_x2xp8")
+
+[node name="Player" type="Node" parent="." node_paths=PackedStringArray("movable")]
+script = ExtResource("1_1y18p")
+movable = NodePath("../Movable")
