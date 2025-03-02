@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv34fsvq87p0o"]
+
+[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="1_3n8sb"]
+
+[node name="Mirror Block" instance=ExtResource("1_3n8sb")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)

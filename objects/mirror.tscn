@@ -1,12 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://0h5dr3rsftd4"]
+[gd_scene load_steps=5 format=3 uid="uid://0h5dr3rsftd4"]
 
 [ext_resource type="Script" path="res://scripts/mirror.gd" id="1_abdlj"]
-[ext_resource type="Material" uid="uid://b7s62xo0dsx35" path="res://materials/mirror_material.tres" id="2_p4dfj"]
 [ext_resource type="Script" path="res://scripts/movable.gd" id="2_pp7xd"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_68pfo"]
-material = ExtResource("2_p4dfj")
-size = Vector3(0.1, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_xhcdy"]
+size = Vector3(0.1, 1, 0.95)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]
 size = Vector3(0.1, 1, 1)
@@ -16,7 +14,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 script = ExtResource("2_pp7xd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_68pfo")
+mesh = SubResource("BoxMesh_xhcdy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_wudyr")

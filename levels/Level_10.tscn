@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://31te8fbfiyp4"]
+
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_adf7s"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_p3pji"]
+[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_baf5s"]
+[ext_resource type="PackedScene" uid="uid://dcdwsnfojj4ed" path="res://objects/mirror_block_neg45.tscn" id="4_0i28q"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_u3egt"]
+[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="5_rfc4j"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_efl61"]
+[ext_resource type="PackedScene" uid="uid://57hqjibqy7mj" path="res://objects/mirror_block_22_5.tscn" id="7_83vm6"]
+[ext_resource type="PackedScene" uid="uid://kpj7llwwne6l" path="res://objects/mirror_block_neg22_5.tscn" id="8_iwj23"]
+[ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="9_sdju7"]
+[ext_resource type="PackedScene" uid="uid://7hi3djrx5i6v" path="res://objects/mirror_block_90.tscn" id="11_228gn"]
+
+[node name="Level9" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_adf7s")]
+
+[node name="Player Block" parent="World" instance=ExtResource("2_p3pji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Enivronment" type="Node3D" parent="."]
+
+[node name="Mirrors" type="Node3D" parent="Enivronment"]
+
+[node name="Mirror Block2" parent="Enivronment/Mirrors" instance=ExtResource("3_baf5s")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1, 0, -3)
+
+[node name="Mirror Block" parent="Enivronment/Mirrors" instance=ExtResource("4_0i28q")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0, -3)
+
+[node name="Mirror Block3" parent="Enivronment/Mirrors" instance=ExtResource("7_83vm6")]
+
+[node name="Mirror Block4" parent="Enivronment/Mirrors" instance=ExtResource("8_iwj23")]
+transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2, 0, 0)
+
+[node name="Mirror Block5" parent="Enivronment/Mirrors" instance=ExtResource("11_228gn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -3)
+
+[node name="Mirror Block6" parent="Enivronment/Mirrors" instance=ExtResource("8_iwj23")]
+transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2, 0, -2)
+
+[node name="Mirror Block7" parent="Enivronment/Mirrors" instance=ExtResource("7_83vm6")]
+transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, 0, 0, -2)
+
+[node name="Immovable" type="Node3D" parent="Enivronment"]
+
+[node name="Laser (Red)" parent="Enivronment/Immovable" instance=ExtResource("4_u3egt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -1)
+script = null
+
+[node name="Wall" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="Wall2" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Glow Block" parent="Enivronment/Immovable" instance=ExtResource("6_efl61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+script = null
+
+[node name="Laser (Blue)" parent="Enivronment/Immovable" instance=ExtResource("4_u3egt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -1)
+script = null
+metadata/beam_red = false
+metadata/beam_blue = true
+
+[node name="Wall3" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+
+[node name="Moveable" type="Node3D" parent="Enivronment"]
+
+[node name="Combiner" parent="." instance=ExtResource("9_sdju7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -1)
