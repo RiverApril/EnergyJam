@@ -62,6 +62,14 @@ func push(direction: Vector3) -> bool:
 		return true
 	return false
 
+func teleport(new_position: Vector3):
+	position = new_position
+	previous_position = position
+	target_position = position
+	EventBus.something_moved_signal.emit()
+	save_state(HistoryBuffer.get_current_state_index())
+
+
 func _physics_process(delta: float) -> void:
 
 	if is_moving:

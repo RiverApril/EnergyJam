@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://chtxl0prnn0h7" path="res://materials/glow_circle_material.tres" id="2_v782e"]
 [ext_resource type="Material" uid="uid://c6cv6k87s5djh" path="res://materials/emitter_material.tres" id="2_wrtnu"]
 [ext_resource type="Script" path="res://scripts/emitter.gd" id="5_qqi5m"]
-[ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/beam.tscn" id="6_nf0dr"]
+[ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/technical/beam.tscn" id="6_nf0dr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mllb7"]
 material = ExtResource("2_wrtnu")
@@ -63,6 +63,7 @@ skeleton = NodePath("../CollisionShape3D")
 script = ExtResource("2_r7nu4")
 base_mesh_instance = NodePath("../Sphere")
 glow_mesh_instance = NodePath("../GlowMesh")
+charge_time = 0.1
 
 [node name="Emitter" type="Node3D" parent="Combiner Glow Orb/Glow"]
 script = ExtResource("5_qqi5m")

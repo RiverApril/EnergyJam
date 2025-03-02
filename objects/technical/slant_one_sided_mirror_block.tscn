@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhr5f7xr2upu7"]
+
+[ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="2_kc6fn"]
+[ext_resource type="Script" path="res://scripts/movable.gd" id="2_lynos"]
+[ext_resource type="Script" path="res://scripts/mirror.gd" id="3_3wfaf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rb1vq"]
+points = PackedVector3Array(-0.4, 0.5, 0.4, -0.4, 0.5, -0.4, 0.4, 0.5, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4)
+
+[sub_resource type="PrismMesh" id="PrismMesh_bme2n"]
+material = ExtResource("2_kc6fn")
+left_to_right = 0.0
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhcdy"]
+size = Vector3(0.1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]
+size = Vector3(0.1, 1, 1)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("2_lynos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_rb1vq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_bme2n")
+
+[node name="Slant One Sided Mirror Block" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Slant One Sided Mirror Block"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_xhcdy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slant One Sided Mirror Block"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+shape = SubResource("BoxShape3D_wudyr")
+
+[node name="Mirror" type="Node" parent="Slant One Sided Mirror Block"]
+script = ExtResource("3_3wfaf")

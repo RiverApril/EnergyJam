@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/movable.gd" id="2_pp7xd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xhcdy"]
-size = Vector3(0.1, 1, 0.95)
+size = Vector3(0.1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]
 size = Vector3(0.1, 1, 1)

@@ -18,6 +18,7 @@ var timer = 0.0
 var charged_progress = 0.0
 
 var emitter_child: Emitter = null
+var cuttable: Cuttable = null
 
 func _ready():
 	EventBus.something_moved_signal.connect(on_something_moved_signal)
@@ -44,6 +45,10 @@ func _ready():
 	if has_node("Emitter"):
 		emitter_child = get_node("Emitter")
 
+	if parent.has_node("Cuttable"):
+		cuttable = parent.get_node("Cuttable")
+		has_objective = false
+
 func _process(delta: float):
 	if timer > 0.0:
 		timer -= delta
@@ -60,9 +65,11 @@ func _process(delta: float):
 		elif charged_progress > 1.0:
 			charged_progress = 1.0
 			EventBus.check_win_signal.emit()
+			if cuttable != null:
+				cuttable.do_cut()
 
 		colored_glow_material.set_shader_parameter("on_ness", charged_progress)
-	
+
 		
 
 

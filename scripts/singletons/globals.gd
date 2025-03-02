@@ -37,7 +37,7 @@ var laser_display_colors: Array = [
 ]
 
 func _ready():
-    var music_packed_scene: PackedScene = load("res://objects/music.tscn")
+    var music_packed_scene: PackedScene = load("res://objects/technical/music.tscn")
     var music_node = music_packed_scene.instantiate()
     add_child(music_node)
     music_node.owner = self

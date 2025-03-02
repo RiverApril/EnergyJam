@@ -83,6 +83,10 @@ func create_beam(rgb: int, start_position: Vector3, direction: Vector3, index: i
 			if collider.collision_layer & 2:
 				var glow: Glow = collider.get_node("Glow")
 				glow.turn_on(rgb)
+		
+		if collider.has_node("Cuttable"):
+			var cuttable: Cuttable = collider.get_node("Cuttable")
+			cuttable.last_direction = direction
 	
 	var center_position: Vector3 = (start_position + hit_position) / 2.0
 	var length: float = (start_position - hit_position).length()
