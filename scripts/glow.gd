@@ -62,8 +62,7 @@ func _process(delta: float):
 			EventBus.check_win_signal.emit()
 
 		colored_glow_material.set_shader_parameter("on_ness", charged_progress)
-	else:
-		charged_progress = 0.0
+	
 		
 
 
@@ -78,7 +77,7 @@ func turn_on(rgb: int):
 	update_emitter_child()
 
 	colored_glow_material.set_shader_parameter("albedo_color", Globals.laser_display_colors[current_RGB])
-	colored_glow_material.set_shader_parameter("on_ness", 0.0)
+	colored_glow_material.set_shader_parameter("on_ness", charged_progress)
 	glow_mesh_instance.visible = true
 	base_mesh_instance.visible = false
 
