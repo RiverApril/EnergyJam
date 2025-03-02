@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://buxx8bxc0y6a8"]
+[gd_scene load_steps=8 format=3 uid="uid://buxx8bxc0y6a8"]
 
 [ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_nlcip"]
-[ext_resource type="Script" path="res://scripts/level_control.gd" id="2_ssoik"]
-[ext_resource type="Resource" uid="uid://dw5wupcbeelw1" path="res://datas/all_levels.tres" id="3_1c1fy"]
+[ext_resource type="Script" path="res://scripts/win_condition.gd" id="4_h5x6f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
 sky_top_color = Color(0.655778, 0.765712, 1, 1)
@@ -45,8 +44,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("PlaneMesh_ce01x")
 skeleton = NodePath("../..")
 
-[node name="LevelControl" type="Node" parent="."]
-script = ExtResource("2_ssoik")
-all_levels = ExtResource("3_1c1fy")
-
 [node name="WinCondition" type="Node" parent="."]
+script = ExtResource("4_h5x6f")

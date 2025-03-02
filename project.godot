@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://scripts/event_bus.gd"
-Globals="*res://scripts/globals.gd"
-HistoryBuffer="*res://scripts/history_buffer.gd"
+Globals="*res://scripts/singletons/globals.gd"
+EventBus="*res://scripts/singletons/event_bus.gd"
+HistoryBuffer="*res://scripts/singletons/history_buffer.gd"
+LevelControl="*res://scripts/singletons/level_control.gd"
 
 [display]
 

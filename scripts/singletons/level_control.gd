@@ -1,6 +1,9 @@
 extends Node
 
-@export var all_levels: AllLevels
+var all_levels: AllLevels
+
+func _ready():
+	all_levels = load("res://datas/all_levels.tres")
 
 func _input(event):
 	
