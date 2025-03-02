@@ -17,6 +17,9 @@ void vertex() {
 }
 
 float distance_func(float x, float y) {
+	if (distance_power < 0.0) {
+		return max(abs(x), abs(y));
+	}
 	return pow(pow(abs(x), distance_power) + pow(abs(y), distance_power), 1.0/distance_power);
 }
 

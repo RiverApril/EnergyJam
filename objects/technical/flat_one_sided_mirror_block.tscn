@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmq68x3htg8yy"]
+
+[ext_resource type="Script" path="res://scripts/movable.gd" id="1_313xo"]
+[ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="2_rv04n"]
+[ext_resource type="Script" path="res://scripts/mirror.gd" id="3_llb85"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf37p"]
+size = Vector3(0.8, 0.8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bp2uf"]
+material = ExtResource("2_rv04n")
+size = Vector3(1, 0.8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhcdy"]
+size = Vector3(0.1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wudyr"]
+size = Vector3(0.1, 1, 1)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_313xo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+shape = SubResource("BoxShape3D_mf37p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+mesh = SubResource("BoxMesh_bp2uf")
+
+[node name="Flat One Sided Mirror Block" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Flat One Sided Mirror Block"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_xhcdy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flat One Sided Mirror Block"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_wudyr")
+
+[node name="Mirror" type="Node" parent="Flat One Sided Mirror Block"]
+script = ExtResource("3_llb85")

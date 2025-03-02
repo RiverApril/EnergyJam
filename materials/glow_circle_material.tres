@@ -6,9 +6,11 @@
 render_priority = 0
 shader = ExtResource("1_imate")
 shader_parameter/albedo_color = Color(0, 0, 1, 1)
+shader_parameter/off_color = Color(0.164706, 0.164706, 0.164706, 1)
 shader_parameter/pulse_speed = 2.0
 shader_parameter/distance_power = 2.0
 shader_parameter/inner_cut_radius = 0.0
 shader_parameter/solid_radius = 0.25
 shader_parameter/fade_raidus = 0.5
 shader_parameter/glow_min = 0.5
+shader_parameter/on_ness = 1.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/emitter.gd" id="1_jfne6"]
 [ext_resource type="Material" uid="uid://c6cv6k87s5djh" path="res://materials/emitter_material.tres" id="2_jg7ut"]
-[ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/beam.tscn" id="2_o5h2k"]
+[ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/technical/beam.tscn" id="2_o5h2k"]
 [ext_resource type="Script" path="res://scripts/movable.gd" id="3_suqlm"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4x4cm"]
