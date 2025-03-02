@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypu6gbo7rkxm"]
+
+[ext_resource type="PackedScene" uid="uid://1dt13q1plnkr" path="res://objects/decorations/corner_border.tscn" id="1_n3t8h"]
+[ext_resource type="Texture2D" uid="uid://dn1v4611338yk" path="res://textures/quad arrows.png" id="2_g4htc"]
+
+[node name="Quad Arrow Border" instance=ExtResource("1_n3t8h")]
+texture = ExtResource("2_g4htc")

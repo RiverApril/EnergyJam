@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://1dt13q1plnkr"]
+
+[ext_resource type="Texture2D" uid="uid://5s3i7bkrrqsn" path="res://textures/corner_border.png" id="1_dmmvx"]
+
+[node name="Corner Border" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, 0)
+modulate = Color(0.377919, 0.377919, 0.377919, 1)
+pixel_size = 0.0625
+axis = 1
+texture_filter = 0
+texture = ExtResource("1_dmmvx")

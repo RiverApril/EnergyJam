@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://5qrpnq1ns0yq"]
+
+[ext_resource type="PackedScene" uid="uid://1dt13q1plnkr" path="res://objects/decorations/corner_border.tscn" id="1_361yp"]
+[ext_resource type="Texture2D" uid="uid://codm20f50fp6o" path="res://textures/h_border.png" id="2_uauw1"]
+
+[node name="H Border" instance=ExtResource("1_361yp")]
+texture = ExtResource("2_uauw1")
