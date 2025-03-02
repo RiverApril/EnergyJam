@@ -50,15 +50,14 @@ func do_cut():
 		var scene2: Movable = direction_and_split["scene2"]
 		var angle1: float = direction_and_split["angle1"] * PI / 180.0
 		var push1: Vector3 = direction_and_split["push1"]
-		
 
 		scene1.teleport(movable.position)
 		scene1.push(push1)
-		scene1.rotate_y(angle1)
+		scene1.rotation = Vector3(0.0, angle1, 0.0)
 
 		scene2.teleport(movable.position)
 		scene2.push(-push1)
-		scene2.rotate_y(angle1 + PI)
+		scene2.rotation = Vector3(0.0, angle1 + PI, 0.0)
 
 		movable.teleport(HIDING_POSITION)
 
