@@ -1,34 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw2abihukk8rx"]
+[gd_scene load_steps=6 format=3 uid="uid://twfiaksnra1t"]
 
-[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_gvgdc"]
-[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_gs1yk"]
-[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_84c64"]
-[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_g0nsl"]
-[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="5_k4on8"]
-[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="6_uq5m7"]
-[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="7_a3jam"]
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_deq2n"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_1x5fv"]
+[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="4_7q5e2"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_b16tl"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_vw5gj"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Tutorial1" type="Node3D"]
 
-[node name="World" parent="." instance=ExtResource("1_gvgdc")]
+[node name="World" parent="." instance=ExtResource("1_deq2n")]
 
-[node name="Player Block" parent="." instance=ExtResource("2_gs1yk")]
+[node name="Player Block" parent="." instance=ExtResource("2_1x5fv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="Mirror Block" parent="." instance=ExtResource("3_84c64")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, -2)
+[node name="Laser (Red)" parent="." instance=ExtResource("4_b16tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+script = null
 
-[node name="Mirror Block2" parent="." instance=ExtResource("3_84c64")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3, 0, -2)
+[node name="Block" parent="." instance=ExtResource("4_7q5e2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Emitter Block" parent="." instance=ExtResource("4_g0nsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
-
-[node name="Wall" parent="." instance=ExtResource("5_k4on8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-
-[node name="Block" parent="." instance=ExtResource("6_uq5m7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
-[node name="Glow Block" parent="." instance=ExtResource("7_a3jam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2)
+[node name="Glow Block" parent="." instance=ExtResource("6_vw5gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
 script = null

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcdwsnfojj4ed"]
+
+[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="1_8xajk"]
+
+[node name="Mirror Block" instance=ExtResource("1_8xajk")]

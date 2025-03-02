@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://w41wkkc5vrdv"]
+
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_cpqle"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_bse17"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_1yipq"]
+[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="4_gtjvv"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_r4x04"]
+[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="6_euogn"]
+
+[node name="Tutorial2" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_cpqle")]
+
+[node name="Player Block" parent="World" instance=ExtResource("2_bse17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Enivronment" type="Node3D" parent="."]
+
+[node name="Laser (Red)" parent="Enivronment" instance=ExtResource("3_1yipq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+script = null
+
+[node name="Block" parent="Enivronment" instance=ExtResource("4_gtjvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Glow Block" parent="Enivronment" instance=ExtResource("5_r4x04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+script = null
+
+[node name="Mirrors" type="Node3D" parent="Enivronment"]
+
+[node name="Mirror Block3" parent="Enivronment/Mirrors" instance=ExtResource("6_euogn")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0, -5)
