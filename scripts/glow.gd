@@ -14,6 +14,9 @@ var has_objective: bool = false
 const TURN_OFF_TIME = 0.01
 var timer = 0.0
 
+@export var charge_time = 1.0
+var charged_progress = 0.0
+
 var emitter_child: Emitter = null
 
 func _ready():
@@ -46,9 +49,22 @@ func _process(delta: float):
 		timer -= delta
 	elif timer < 0.0:
 		timer = 0.0
+		charged_progress = 0.0
 		glow_mesh_instance.visible = false
 		base_mesh_instance.visible = true
 		update_emitter_child()
+
+	if current_RGB > 0:
+		if charged_progress < 1.0:
+			charged_progress += delta / charge_time
+		elif charged_progress > 1.0:
+			charged_progress = 1.0
+			EventBus.check_win_signal.emit()
+
+		colored_glow_material.set_shader_parameter("on_ness", charged_progress)
+	else:
+		charged_progress = 0.0
+		
 
 
 func on_something_moved_signal():
@@ -62,6 +78,7 @@ func turn_on(rgb: int):
 	update_emitter_child()
 
 	colored_glow_material.set_shader_parameter("albedo_color", Globals.laser_display_colors[current_RGB])
+	colored_glow_material.set_shader_parameter("on_ness", 0.0)
 	glow_mesh_instance.visible = true
 	base_mesh_instance.visible = false
 
@@ -72,4 +89,4 @@ func update_emitter_child():
 		emitter_child.needs_update = true
 
 func is_objective_met():
-	return current_RGB == objective_RGB
+	return current_RGB == objective_RGB and charged_progress == 1.0

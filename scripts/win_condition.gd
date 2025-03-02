@@ -6,7 +6,8 @@ var win_check_timer: float = 0.0
 const WIN_CHECK_DELAY: float = 0.1
 
 func _ready() -> void:
-	EventBus.something_moved_signal.connect(on_something_moved_signal)
+	# EventBus.something_moved_signal.connect(on_something_moved_signal)
+	EventBus.check_win_signal.connect(on_check_win_signal)
 
 	all_glows = Array()
 	var root = find_root(self)
@@ -32,7 +33,7 @@ func find_root(node: Node) -> Node:
 		return node
 	return find_root(parent)
 
-func on_something_moved_signal():
+func on_check_win_signal():
 	win_check_timer = WIN_CHECK_DELAY
 
 func check_win():
