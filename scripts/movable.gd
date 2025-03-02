@@ -4,6 +4,9 @@ class_name Movable
 
 signal ran_into_something_signal(collision, direction);
 
+@export var can_move_x: bool = true
+@export var can_move_z: bool = true
+
 var move_speed: float = Globals.default_block_move_speed
 
 var is_moving: bool = false
@@ -47,6 +50,11 @@ func save_state(index: int):
 
 
 func push(direction: Vector3) -> bool:
+	if !can_move_x:
+		direction.x = 0
+	if !can_move_z:
+		direction.z = 0
+
 	if !is_moving and !direction.is_zero_approx():
 		is_moving = true
 		previous_position = position
