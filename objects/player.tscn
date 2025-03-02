@@ -49,3 +49,4 @@ sprite = NodePath("../Sprite3D")
 script = ExtResource("6_8uo4u")
 base_mesh_instance = NodePath("../MeshInstance3D")
 glow_mesh_instance = NodePath("../GlowMesh")
+charge_time = 0.1
