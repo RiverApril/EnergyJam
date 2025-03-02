@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_baf5s"]
 [ext_resource type="PackedScene" uid="uid://dcdwsnfojj4ed" path="res://objects/mirror_block_neg45.tscn" id="4_0i28q"]
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_u3egt"]
-[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="5_rfc4j"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_efl61"]
 [ext_resource type="PackedScene" uid="uid://57hqjibqy7mj" path="res://objects/mirror_block_22_5.tscn" id="7_83vm6"]
 [ext_resource type="PackedScene" uid="uid://kpj7llwwne6l" path="res://objects/mirror_block_neg22_5.tscn" id="8_iwj23"]
 [ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="9_sdju7"]
+[ext_resource type="PackedScene" uid="uid://c1f2q7xx855s3" path="res://objects/circle_wall.tscn" id="10_tom3c"]
 [ext_resource type="PackedScene" uid="uid://7hi3djrx5i6v" path="res://objects/mirror_block_90.tscn" id="11_228gn"]
 
 [node name="Level9" type="Node3D"]
@@ -49,15 +49,12 @@ transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, 0,
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -1)
 script = null
 
-[node name="Wall" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
-
-[node name="Wall2" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-
 [node name="Glow Block" parent="Enivronment/Immovable" instance=ExtResource("6_efl61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 script = null
+metadata/objective_red = true
+metadata/objective_green = false
+metadata/objective_blue = true
 
 [node name="Laser (Blue)" parent="Enivronment/Immovable" instance=ExtResource("4_u3egt")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -1)
@@ -65,7 +62,13 @@ script = null
 metadata/beam_red = false
 metadata/beam_blue = true
 
-[node name="Wall3" parent="Enivronment/Immovable" instance=ExtResource("5_rfc4j")]
+[node name="Circle Wall" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+
+[node name="Circle Wall2" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Circle Wall3" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
 
 [node name="Moveable" type="Node3D" parent="Enivronment"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3rgriamiuxgj"]
+[gd_scene load_steps=13 format=3 uid="uid://b3rgriamiuxgj"]
 
 [ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_mlhc4"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_xd8m3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="7_adoke"]
 [ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="10_wea26"]
 [ext_resource type="PackedScene" uid="uid://dthk2bvne4lc0" path="res://objects/filter.tscn" id="11_io5ok"]
+[ext_resource type="PackedScene" uid="uid://c1f2q7xx855s3" path="res://objects/circle_wall.tscn" id="12_8qal4"]
 [ext_resource type="PackedScene" uid="uid://c38gfk35326dg" path="res://objects/transmit_glow_block.tscn" id="15_e2xa4"]
 
 [node name="Node3D" type="Node3D"]
@@ -88,3 +89,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 
 [node name="Filter" parent="." instance=ExtResource("11_io5ok")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -6)
+
+[node name="Circle Wall" parent="." instance=ExtResource("12_8qal4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)

@@ -1,27 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://twfiaksnra1t"]
 
-[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_deq2n"]
-[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_1x5fv"]
-[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="4_7q5e2"]
-[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_b16tl"]
-[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_vw5gj"]
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_n2psw"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_gbeps"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_rpyud"]
+[ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="4_ga1bi"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_rb8bl"]
 
 [node name="Tutorial1" type="Node3D"]
 
-[node name="World" parent="." instance=ExtResource("1_deq2n")]
+[node name="World" parent="." instance=ExtResource("1_n2psw")]
 
-[node name="Player Block" parent="." instance=ExtResource("2_1x5fv")]
+[node name="Player Block" parent="." instance=ExtResource("2_gbeps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="Laser (Red)" parent="." instance=ExtResource("4_b16tl")]
+[node name="Laser (Red)" parent="." instance=ExtResource("3_rpyud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
 script = null
 
-[node name="Block" parent="." instance=ExtResource("4_7q5e2")]
+[node name="Block" parent="." instance=ExtResource("4_ga1bi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="Glow Block" parent="." instance=ExtResource("7_a3jam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+[node name="Glow Block" parent="." instance=ExtResource("5_rb8bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
 script = null
 metadata/objective_red = true
 metadata/objective_green = false

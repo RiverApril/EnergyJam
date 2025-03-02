@@ -10,7 +10,6 @@ material = ExtResource("1_syeb2")
 [node name="Wall" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
 shape = SubResource("BoxShape3D_prb83")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

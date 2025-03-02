@@ -46,10 +46,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
 [node name="Glow Block" parent="Enivronment/Immovable" instance=ExtResource("6_hjta4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
 script = null
+metadata/objective_red = true
+metadata/objective_green = false
 
 [node name="Transmit Glow Block" parent="Enivronment/Immovable" instance=ExtResource("7_cm78x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
 script = null
+metadata/objective_red = true
+metadata/objective_green = false
 
 [node name="Wall3" parent="Enivronment/Immovable" instance=ExtResource("5_so8cg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
