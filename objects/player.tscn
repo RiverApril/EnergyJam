@@ -1,28 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://wdtsu7b21k3j"]
+[gd_scene load_steps=10 format=3 uid="uid://wdtsu7b21k3j"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1y18p"]
 [ext_resource type="Material" uid="uid://d0dq33ntoi6lg" path="res://materials/player_material.tres" id="1_5f8n1"]
 [ext_resource type="Script" path="res://scripts/movable.gd" id="2_x2xp8"]
+[ext_resource type="Material" uid="uid://cqv0gu05bvn45" path="res://materials/player_glow_material.tres" id="3_kuw8g"]
 [ext_resource type="Texture2D" uid="uid://b10wlou0jvuc" path="res://textures/player.png" id="4_ruqeq"]
+[ext_resource type="Script" path="res://scripts/glow.gd" id="6_8uo4u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uwu1i"]
 material = ExtResource("1_5f8n1")
-size = Vector3(0.75, 0.75, 0.75)
+size = Vector3(0.625, 0.625, 0.625)
+
+[sub_resource type="BoxMesh" id="BoxMesh_33e3i"]
+material = ExtResource("3_kuw8g")
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnels"]
 size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Player Block" type="StaticBody3D"]
+collision_layer = 3
 script = ExtResource("2_x2xp8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_uwu1i")
 
+[node name="GlowMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_33e3i")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tnels")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 pixel_size = 0.0625
 axis = 1
 texture_filter = 0
@@ -34,3 +44,8 @@ vframes = 3
 script = ExtResource("1_1y18p")
 movable = NodePath("..")
 sprite = NodePath("../Sprite3D")
+
+[node name="Glow" type="Node" parent="." node_paths=PackedStringArray("base_mesh_instance", "glow_mesh_instance")]
+script = ExtResource("6_8uo4u")
+base_mesh_instance = NodePath("../MeshInstance3D")
+glow_mesh_instance = NodePath("../GlowMesh")

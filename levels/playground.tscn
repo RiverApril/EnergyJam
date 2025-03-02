@@ -76,6 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
 
 [node name="Transmit Glow Block" parent="." instance=ExtResource("15_e2xa4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
+metadata/objective_red = true
+metadata/objective_green = false
+metadata/objective_blue = true
 
 [node name="Combiner" parent="." instance=ExtResource("10_wea26")]
 metadata/test = Color(0.803287, 0.340827, 1, 1)
