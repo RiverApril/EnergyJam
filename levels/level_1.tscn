@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://twfiaksnra1t"]
+[gd_scene load_steps=31 format=3 uid="uid://twfiaksnra1t"]
 
 [ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_n2psw"]
 [ext_resource type="Texture2D" uid="uid://cbx44vhv2b4dh" path="res://textures/controls.png" id="2_e4vy7"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cv34fsvq87p0o" path="res://objects/mirror_block_45.tscn" id="2_x0amb"]
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_rpyud"]
 [ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="4_ga1bi"]
-[ext_resource type="Script" path="res://levels/block_controller.gd" id="5_1ie6y"]
+[ext_resource type="Script" path="res://scripts/animation_controller.gd" id="5_1ie6y"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_rb8bl"]
 [ext_resource type="Texture2D" uid="uid://cccxstrm1oypa" path="res://textures/quad arrows-sheet.png" id="6_bjt11"]
 [ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="7_j2y6i"]
@@ -48,6 +48,42 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("6_bjt11")
 region = Rect2(160, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7gw"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(160, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmm07"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(192, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivev"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(224, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs8py"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(256, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h7ea"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(0, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwrnx"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(32, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbikj"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(64, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2n77"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(96, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd3w1"]
+atlas = ExtResource("6_bjt11")
+region = Rect2(128, 11, 32, 11)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vetwp"]
 animations = [{
 "frames": [{
@@ -81,6 +117,38 @@ animations = [{
 "loop": true,
 "name": &"can_push",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmm07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ivev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs8py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwrnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbikj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2n77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd3w1")
+}],
+"loop": true,
+"name": &"can_slide",
+"speed": 5.0
 }]
 
 [node name="Tutorial1" type="Node3D"]
@@ -113,8 +181,7 @@ rotation_order = 0
 pixel_size = 0.06
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vetwp")
-animation = &"can_push"
-frame_progress = 0.512276
+animation = &"can_slide"
 
 [node name="Mirrors" type="Node" parent="Environment"]
 
