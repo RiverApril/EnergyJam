@@ -6,6 +6,7 @@ signal ran_into_something_signal(collision, direction);
 
 @export var can_move_h: bool = true
 @export var can_move_v: bool = true
+@export var can_push_others: bool = true
 
 var move_speed: float = Globals.default_block_move_speed
 
@@ -77,6 +78,10 @@ func _physics_process(delta: float) -> void:
 
 		if collision:
 			ran_into_something_signal.emit(collision, target_position-previous_position)
+			if can_push_others:
+				var other = collision.get_collider()
+				if other is Movable:
+					other.push(target_position-previous_position)
 			target_position = previous_position
 
 		EventBus.something_moved_signal.emit()
