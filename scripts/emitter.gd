@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 			child.queue_free()
 
 		# print("create first beam: ", beam_rgb)
-		create_beam(beam_rgb, global_position, (parent.transform.basis * Vector3.FORWARD).normalized(), 0);
+		create_beam(beam_rgb, global_position, (parent.global_basis * Vector3.FORWARD).normalized(), 0);
 	
 
 
