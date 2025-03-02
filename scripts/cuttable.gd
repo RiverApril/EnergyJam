@@ -38,7 +38,7 @@ func do_cut():
 
 	for i in range(direction_and_splits.size()):
 		var direction_and_split = direction_and_splits[i]
-		var direction = direction_and_split["direction"]
+		var direction = direction_and_split["direction"].normalized()
 		var dot = abs(direction.dot(last_direction))
 		if dot > best_dot:
 			best_dot = dot

@@ -65,7 +65,7 @@ func _process(delta: float):
 		elif charged_progress > 1.0:
 			charged_progress = 1.0
 			EventBus.check_win_signal.emit()
-			if cuttable != null:
+			if cuttable != null and is_objective_met():
 				cuttable.do_cut()
 
 		colored_glow_material.set_shader_parameter("on_ness", charged_progress)
