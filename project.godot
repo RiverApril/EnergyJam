@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Energy Jam"
-run/main_scene="res://levels/level_1.tscn"
+config/name="Energy Beams"
+config/version="1.0"
+run/main_scene="res://levels/Level_1.tscn"
+
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
