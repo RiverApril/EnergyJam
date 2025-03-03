@@ -1,77 +1,76 @@
-[gd_scene load_steps=12 format=3 uid="uid://31te8fbfiyp4"]
+[gd_scene load_steps=9 format=3 uid="uid://byie2523fwjwg"]
 
-[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_adf7s"]
-[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_p3pji"]
-[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_baf5s"]
-[ext_resource type="PackedScene" uid="uid://dcdwsnfojj4ed" path="res://objects/mirror_block_neg45.tscn" id="4_0i28q"]
-[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_u3egt"]
-[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_efl61"]
-[ext_resource type="PackedScene" uid="uid://57hqjibqy7mj" path="res://objects/mirror_block_22_5.tscn" id="7_83vm6"]
-[ext_resource type="PackedScene" uid="uid://kpj7llwwne6l" path="res://objects/mirror_block_neg22_5.tscn" id="8_iwj23"]
-[ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="9_sdju7"]
-[ext_resource type="PackedScene" uid="uid://c1f2q7xx855s3" path="res://objects/circle_wall.tscn" id="10_tom3c"]
-[ext_resource type="PackedScene" uid="uid://7hi3djrx5i6v" path="res://objects/mirror_block_90.tscn" id="11_228gn"]
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_pd0mn"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_ijv6w"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_m5lig"]
+[ext_resource type="PackedScene" uid="uid://dthk2bvne4lc0" path="res://objects/filter.tscn" id="4_g2qh2"]
+[ext_resource type="PackedScene" uid="uid://1dt13q1plnkr" path="res://objects/decorations/corner_border.tscn" id="5_sonfs"]
+[ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="6_l2pqi"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="7_df8wb"]
+[ext_resource type="PackedScene" uid="uid://cv34fsvq87p0o" path="res://objects/mirror_block_45.tscn" id="8_7i8mx"]
 
-[node name="Level9" type="Node3D"]
+[node name="Level10" type="Node3D"]
 
-[node name="World" parent="." instance=ExtResource("1_adf7s")]
+[node name="World" parent="." instance=ExtResource("1_pd0mn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="Player Block" parent="World" instance=ExtResource("2_p3pji")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+[node name="Player Block" parent="World" instance=ExtResource("2_ijv6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
-[node name="Enivronment" type="Node3D" parent="."]
-
-[node name="Mirrors" type="Node3D" parent="Enivronment"]
-
-[node name="Mirror Block2" parent="Enivronment/Mirrors" instance=ExtResource("3_baf5s")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1, 0, -3)
-
-[node name="Mirror Block" parent="Enivronment/Mirrors" instance=ExtResource("4_0i28q")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0, -3)
-
-[node name="Mirror Block3" parent="Enivronment/Mirrors" instance=ExtResource("7_83vm6")]
-
-[node name="Mirror Block4" parent="Enivronment/Mirrors" instance=ExtResource("8_iwj23")]
-transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2, 0, 0)
-
-[node name="Mirror Block5" parent="Enivronment/Mirrors" instance=ExtResource("11_228gn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -3)
-
-[node name="Mirror Block6" parent="Enivronment/Mirrors" instance=ExtResource("8_iwj23")]
-transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -2, 0, -2)
-
-[node name="Mirror Block7" parent="Enivronment/Mirrors" instance=ExtResource("7_83vm6")]
-transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, 0, 0, -2)
-
-[node name="Immovable" type="Node3D" parent="Enivronment"]
-
-[node name="Laser (Red)" parent="Enivronment/Immovable" instance=ExtResource("4_u3egt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, -1)
-script = null
-
-[node name="Glow Block" parent="Enivronment/Immovable" instance=ExtResource("6_efl61")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-script = null
-metadata/objective_red = true
-metadata/objective_green = false
-metadata/objective_blue = true
-
-[node name="Laser (Blue)" parent="Enivronment/Immovable" instance=ExtResource("4_u3egt")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -1)
-script = null
-metadata/beam_red = false
+[node name="Emitter Block4" parent="." instance=ExtResource("3_m5lig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/beam_green = true
 metadata/beam_blue = true
 
-[node name="Circle Wall" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+[node name="Filter" parent="." instance=ExtResource("4_g2qh2")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, -1)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/transmit_red = true
+metadata/transmit_blue = false
+metadata/reflect_red = false
+metadata/reflect_blue = true
 
-[node name="Circle Wall2" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+[node name="Corner Border" parent="Filter" instance=ExtResource("5_sonfs")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.875, 0)
 
-[node name="Circle Wall3" parent="Enivronment/Immovable" instance=ExtResource("10_tom3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+[node name="Filter2" parent="." instance=ExtResource("4_g2qh2")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, -5)
+can_move_h = false
+can_move_v = false
+can_push_others = false
 
-[node name="Moveable" type="Node3D" parent="Enivronment"]
+[node name="Corner Border2" parent="Filter2" instance=ExtResource("5_sonfs")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.875, 0)
 
-[node name="Combiner" parent="." instance=ExtResource("9_sdju7")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -1)
+[node name="Filter3" parent="." instance=ExtResource("4_g2qh2")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, -9)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/transmit_red = true
+metadata/transmit_green = false
+metadata/reflect_red = false
+metadata/reflect_green = true
+
+[node name="Combiner" parent="." instance=ExtResource("6_l2pqi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, -1)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Glow Block" parent="." instance=ExtResource("7_df8wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2)
+
+[node name="Mirror Block" parent="." instance=ExtResource("8_7i8mx")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6, 0, 3)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Corner Border" parent="Mirror Block" instance=ExtResource("5_sonfs")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.125, 0)

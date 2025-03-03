@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://oygl4a4lq4c5"]
+
+[ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_at4ij"]
+[ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_6u7r1"]
+[ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_bor3a"]
+[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="4_3yqhs"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_u6edf"]
+[ext_resource type="PackedScene" uid="uid://c38gfk35326dg" path="res://objects/transmit_glow_block.tscn" id="6_ls52s"]
+[ext_resource type="PackedScene" uid="uid://b4sp3lqumwuiy" path="res://objects/cuttable_block.tscn" id="7_v1a83"]
+[ext_resource type="PackedScene" uid="uid://57hqjibqy7mj" path="res://objects/mirror_block_22_5.tscn" id="8_8kg7i"]
+
+[node name="Level8" type="Node3D"]
+
+[node name="World" parent="." instance=ExtResource("1_at4ij")]
+
+[node name="Player Block" parent="World" instance=ExtResource("2_6u7r1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Enivronment" type="Node3D" parent="."]
+
+[node name="Mirrors" type="Node3D" parent="Enivronment"]
+
+[node name="Immovable" type="Node3D" parent="Enivronment"]
+
+[node name="Laser (Red)" parent="Enivronment/Immovable" instance=ExtResource("3_bor3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+script = null
+
+[node name="Wall" parent="Enivronment/Immovable" instance=ExtResource("4_3yqhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="Wall2" parent="Enivronment/Immovable" instance=ExtResource("4_3yqhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="Glow Block (Blue Target)" parent="Enivronment/Immovable" instance=ExtResource("5_u6edf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+script = null
+metadata/objective_green = false
+metadata/objective_blue = true
+
+[node name="Glow Block(Red Target)" parent="Enivronment/Immovable" instance=ExtResource("5_u6edf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/objective_red = true
+metadata/objective_green = false
+
+[node name="Transmit Glow Block (Red target)" parent="Enivronment/Immovable" instance=ExtResource("6_ls52s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+script = null
+metadata/objective_red = true
+metadata/objective_green = false
+
+[node name="Laser (Blue)" parent="Enivronment/Immovable" instance=ExtResource("3_bor3a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -7)
+script = null
+metadata/beam_red = false
+metadata/beam_blue = true
+
+[node name="Moveable" type="Node3D" parent="Enivronment"]
+
+[node name="Cuttable Block" parent="." instance=ExtResource("7_v1a83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+
+[node name="Cuttable Block2" parent="." instance=ExtResource("7_v1a83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+metadata/objective_blue = true
+
+[node name="Mirror Block" parent="." instance=ExtResource("8_8kg7i")]
+transform = Transform3D(0.92388, 0, 0.382684, 0, 1, 0, -0.382684, 0, 0.92388, -1, 0, 3)

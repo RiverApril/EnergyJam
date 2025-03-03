@@ -87,6 +87,9 @@ func turn_on(rgb: int):
 	colored_glow_material.set_shader_parameter("on_ness", charged_progress)
 	glow_mesh_instance.visible = true
 	base_mesh_instance.visible = false
+	
+	if is_objective_met():
+		EventBus.check_win_signal.emit()
 
 func update_emitter_child():
 	if emitter_child != null:

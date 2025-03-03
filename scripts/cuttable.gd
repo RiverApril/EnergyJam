@@ -60,11 +60,3 @@ func do_cut():
 		scene2.rotation = Vector3(0.0, angle1 + PI, 0.0)
 
 		movable.teleport(HIDING_POSITION)
-
-
-
-
-
-
-
-

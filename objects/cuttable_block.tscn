@@ -1,28 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://cs43rjond1ai4"]
+[gd_scene load_steps=14 format=3 uid="uid://b4sp3lqumwuiy"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_xkvrs"]
-[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_mkgtt"]
-[ext_resource type="Shader" path="res://materials/glow.gdshader" id="3_2kynq"]
-[ext_resource type="Material" uid="uid://djp620x3miwou" path="res://materials/cuttable_block_material.tres" id="3_ka5le"]
-[ext_resource type="Script" path="res://scripts/glow.gd" id="5_5kug7"]
-[ext_resource type="Script" path="res://scripts/cuttable.gd" id="6_si7v4"]
-[ext_resource type="PackedScene" uid="uid://dhr5f7xr2upu7" path="res://objects/technical/slant_one_sided_mirror_block.tscn" id="7_o56xa"]
-[ext_resource type="PackedScene" uid="uid://bmq68x3htg8yy" path="res://objects/technical/flat_one_sided_mirror_block.tscn" id="8_et6hr"]
+[ext_resource type="Script" path="res://scripts/movable.gd" id="1_jm06d"]
+[ext_resource type="Material" path="res://materials/cuttable_block_material.tres" id="2_clfo1"]
+[ext_resource type="Shader" path="res://materials/glow.gdshader" id="3_2m5qf"]
+[ext_resource type="Script" path="res://scripts/glow.gd" id="4_nhb2t"]
+[ext_resource type="Script" path="res://scripts/cuttable.gd" id="5_0g0gp"]
+[ext_resource type="PackedScene" uid="uid://dhr5f7xr2upu7" path="res://objects/technical/slant_one_sided_mirror_block.tscn" id="6_y0kda"]
+[ext_resource type="PackedScene" uid="uid://bmq68x3htg8yy" path="res://objects/technical/flat_one_sided_mirror_block.tscn" id="7_0hetd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_16sx5"]
 size = Vector3(0.8, 0.8, 0.8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8d8pa"]
+albedo_color = Color(0.275395, 0.221133, 0.136593, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_arlwc"]
-material = ExtResource("2_mkgtt")
+material = SubResource("StandardMaterial3D_8d8pa")
 size = Vector3(0.8, 0.8, 0.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rvrdi"]
-material = ExtResource("3_ka5le")
+material = ExtResource("2_clfo1")
 size = Vector3(2, 2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8tr6h"]
 render_priority = 0
-shader = ExtResource("3_2kynq")
+shader = ExtResource("3_2m5qf")
 shader_parameter/albedo_color = Color(1, 0, 0, 1)
 shader_parameter/off_color = Color(0.164706, 0.164706, 0.164706, 1)
 shader_parameter/pulse_speed = 0.0
@@ -39,7 +41,7 @@ size = Vector3(1.5, 1.5, 1.5)
 
 [node name="Cuttable Block" type="StaticBody3D"]
 collision_layer = 3
-script = ExtResource("1_xkvrs")
+script = ExtResource("1_jm06d")
 metadata/objective_red = true
 metadata/objective_green = false
 metadata/objective_blue = false
@@ -59,22 +61,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_whh0g")
 
 [node name="Glow" type="Node" parent="." node_paths=PackedStringArray("base_mesh_instance", "glow_mesh_instance", "objective_mesh_instance")]
-script = ExtResource("5_5kug7")
+script = ExtResource("4_nhb2t")
 base_mesh_instance = NodePath("../MeshInstance3D")
 glow_mesh_instance = NodePath("../GlowMesh")
 objective_mesh_instance = NodePath("../ObjectiveMesh")
 
 [node name="Cuttable" type="Node" parent="." node_paths=PackedStringArray("cut_result_top_left_1", "cut_result_top_left_2", "cut_result_top_1", "cut_result_top_2")]
-script = ExtResource("6_si7v4")
+script = ExtResource("5_0g0gp")
 cut_result_top_left_1 = NodePath("Slant One Sided Mirror Block")
 cut_result_top_left_2 = NodePath("Slant One Sided Mirror Block2")
-cut_result_top_1 = NodePath("Flat One Sided Mirror Block")
-cut_result_top_2 = NodePath("Flat One Sided Mirror Block2")
+cut_result_top_1 = NodePath("StaticBody3D")
+cut_result_top_2 = NodePath("StaticBody3D2")
 
-[node name="Slant One Sided Mirror Block" parent="Cuttable" instance=ExtResource("7_o56xa")]
+[node name="Slant One Sided Mirror Block" parent="Cuttable" instance=ExtResource("6_y0kda")]
 
-[node name="Slant One Sided Mirror Block2" parent="Cuttable" instance=ExtResource("7_o56xa")]
+[node name="Slant One Sided Mirror Block2" parent="Cuttable" instance=ExtResource("6_y0kda")]
 
-[node name="Flat One Sided Mirror Block" parent="Cuttable" instance=ExtResource("8_et6hr")]
+[node name="StaticBody3D" parent="Cuttable" instance=ExtResource("7_0hetd")]
 
-[node name="Flat One Sided Mirror Block2" parent="Cuttable" instance=ExtResource("8_et6hr")]
+[node name="StaticBody3D2" parent="Cuttable" instance=ExtResource("7_0hetd")]

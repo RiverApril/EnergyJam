@@ -51,6 +51,10 @@ func save_state(index: int):
 
 
 func push(direction: Vector3) -> bool:
+	var parent = get_parent()
+	if parent and parent.has_method("stop_anim"):
+		parent.stop_anim()
+
 	if !can_move_h:
 		direction.x = 0
 	if !can_move_v:
