@@ -10,6 +10,7 @@ var colored_glow_material: ShaderMaterial
 var current_RGB: int = 0
 var objective_RGB: int = 0
 var has_objective: bool = false
+@export var ignore_as_objective = false
 
 const TURN_OFF_TIME = 0.01
 var timer = 0.0
@@ -35,7 +36,7 @@ func _ready():
 		| (0b001 if parent.get_meta("objective_blue", false) else 0)
 	
 	has_objective = parent.has_meta("objective_red") or parent.has_meta("objective_green") or parent.has_meta("objective_blue");
-	
+
 	if has_objective:
 		var colored_objective_material = objective_mesh_instance.get_active_material(0).duplicate()
 		objective_mesh_instance.material_override = colored_objective_material
@@ -48,6 +49,9 @@ func _ready():
 	if parent.has_node("Cuttable"):
 		cuttable = parent.get_node("Cuttable")
 		has_objective = false
+	
+	if ignore_as_objective:
+		has_objective = false
 
 func _process(delta: float):
 	if timer > 0.0:
@@ -59,6 +63,8 @@ func _process(delta: float):
 		base_mesh_instance.visible = true
 		update_emitter_child()
 
+	# print(get_parent().name)
+	# print("current_RGB ", current_RGB)
 	if current_RGB > 0:
 		if charged_progress < 1.0:
 			charged_progress += delta / charge_time
@@ -88,6 +94,7 @@ func turn_on(rgb: int):
 	glow_mesh_instance.visible = true
 	base_mesh_instance.visible = false
 	
+	# print("charged_progress: ", charged_progress)
 	if is_objective_met():
 		EventBus.check_win_signal.emit()
 
@@ -98,4 +105,8 @@ func update_emitter_child():
 		emitter_child.needs_update = true
 
 func is_objective_met():
-	return current_RGB == objective_RGB and charged_progress == 1.0
+	# print(get_parent().name)
+	# print(current_RGB)
+	# print(objective_RGB)
+	# print(charged_progress)
+	return current_RGB == objective_RGB and charged_progress >= 1.0

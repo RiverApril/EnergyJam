@@ -18,6 +18,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="Combiner" parent="World" instance=ExtResource("4_b4w3p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+can_move_h = false
+can_move_v = false
 
 [node name="Corner Border3" parent="World/Combiner" instance=ExtResource("7_8mb4p")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.875, 0)

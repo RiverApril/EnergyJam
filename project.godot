@@ -13,7 +13,6 @@ config_version=5
 config/name="Energy Beams"
 config/version="1.0"
 run/main_scene="res://levels/Level_1.tscn"
-
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.png"
 
