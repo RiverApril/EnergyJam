@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://wp2nd16mvwmg"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_xat77"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_xat77"]
 [ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_batp2"]
-[ext_resource type="Script" path="res://scripts/glow.gd" id="2_r7nu4"]
+[ext_resource type="Script" uid="uid://dll2a460a4pfy" path="res://scripts/glow.gd" id="2_r7nu4"]
 [ext_resource type="Material" uid="uid://chtxl0prnn0h7" path="res://materials/glow_circle_material.tres" id="2_v782e"]
 [ext_resource type="Material" uid="uid://c6cv6k87s5djh" path="res://materials/emitter_material.tres" id="2_wrtnu"]
-[ext_resource type="Script" path="res://scripts/emitter.gd" id="5_qqi5m"]
+[ext_resource type="Script" uid="uid://b2dmeqbjubyd3" path="res://scripts/emitter.gd" id="5_qqi5m"]
 [ext_resource type="PackedScene" uid="uid://dklh48h2iuehd" path="res://objects/technical/beam.tscn" id="6_nf0dr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mllb7"]

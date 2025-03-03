@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dthk2bvne4lc0"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_agh2x"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_agh2x"]
 [ext_resource type="Material" uid="uid://b7s62xo0dsx35" path="res://materials/mirror_material.tres" id="2_j34rb"]
-[ext_resource type="Script" path="res://scripts/transmit.gd" id="2_vamcj"]
-[ext_resource type="Script" path="res://scripts/mirror.gd" id="3_fg31l"]
+[ext_resource type="Script" uid="uid://c2adnt15jo7oo" path="res://scripts/transmit.gd" id="2_vamcj"]
+[ext_resource type="Script" uid="uid://cwvnu13puq8ni" path="res://scripts/mirror.gd" id="3_fg31l"]
 [ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="3_jes5u"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x2t8e"]

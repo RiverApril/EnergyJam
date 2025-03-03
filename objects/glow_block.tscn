@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnnuj7j4mqu3n"]
 
 [ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="2_15nlk"]
-[ext_resource type="Script" path="res://scripts/glow.gd" id="2_iokxy"]
+[ext_resource type="Script" uid="uid://dll2a460a4pfy" path="res://scripts/glow.gd" id="2_iokxy"]
 [ext_resource type="Material" uid="uid://w0yc8rfemfgc" path="res://materials/glow_objective_material.tres" id="3_1c0fs"]
 [ext_resource type="Material" uid="uid://rq3xekywog2m" path="res://materials/glow_squircle_material.tres" id="3_43ibw"]
-[ext_resource type="Script" path="res://scripts/movable.gd" id="4_agwwu"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="4_agwwu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
 size = Vector3(0.5, 0.5, 0.5)

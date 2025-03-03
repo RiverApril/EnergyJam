@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://f33lcj4xqnf8"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_ieub7"]
-[ext_resource type="Script" path="res://scripts/prism.gd" id="2_g14dg"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_ieub7"]
+[ext_resource type="Script" uid="uid://flp65e1lt13e" path="res://scripts/prism.gd" id="2_g14dg"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ct7im"]
 size = Vector3(0.5, 0.5, 1)

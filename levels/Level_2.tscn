@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_1yipq"]
 [ext_resource type="PackedScene" uid="uid://c74inxfultjlp" path="res://objects/decorations/v_border.tscn" id="5_3e2wc"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_r4x04"]
-[ext_resource type="Script" path="res://scripts/animation_controller.gd" id="6_7y8lg"]
+[ext_resource type="Script" uid="uid://hy3qshi7eqo5" path="res://scripts/animation_controller.gd" id="6_7y8lg"]
 [ext_resource type="PackedScene" uid="uid://dcdwsnfojj4ed" path="res://objects/mirror_block_neg45.tscn" id="7_d5vb1"]
 [ext_resource type="Texture2D" uid="uid://cccxstrm1oypa" path="res://textures/quad arrows-sheet.png" id="8_osm85"]
 [ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="9_lke0t"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmq68x3htg8yy"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_313xo"]
-[ext_resource type="Script" path="res://scripts/mirror.gd" id="3_llb85"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_313xo"]
+[ext_resource type="Script" uid="uid://cwvnu13puq8ni" path="res://scripts/mirror.gd" id="3_llb85"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cp3iy"]
 size = Vector3(1, 1, 0.374756)

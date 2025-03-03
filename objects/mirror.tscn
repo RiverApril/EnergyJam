@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0h5dr3rsftd4"]
 
-[ext_resource type="Script" path="res://scripts/mirror.gd" id="1_abdlj"]
-[ext_resource type="Script" path="res://scripts/movable.gd" id="2_pp7xd"]
+[ext_resource type="Script" uid="uid://cwvnu13puq8ni" path="res://scripts/mirror.gd" id="1_abdlj"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="2_pp7xd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xhcdy"]
 size = Vector3(0.1, 1, 1)

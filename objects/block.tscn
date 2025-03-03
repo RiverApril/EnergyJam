@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://u1lex88s588t"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_e8r57"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_e8r57"]
 [ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="1_qtb1v"]
 [ext_resource type="Texture2D" uid="uid://d3bxjnadcyhu8" path="res://textures/movable.png" id="3_f5ak2"]
 

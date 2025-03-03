@@ -5,11 +5,9 @@ var all_levels: AllLevels
 func _ready():
 	all_levels = load("res://datas/all_levels.tres")
 
-func _input(event):
-	
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			go_to_next_level()
+func _process(_delta: float):
+	if Input.is_action_just_pressed("Skip Level"):
+		go_to_next_level()
 
 func reload_curret_level():
 	load_level(Globals.current_level_index)

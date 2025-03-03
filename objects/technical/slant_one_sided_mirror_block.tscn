@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhr5f7xr2upu7"]
 
 [ext_resource type="Material" uid="uid://miti6kg4ca1" path="res://materials/block_material.tres" id="2_kc6fn"]
-[ext_resource type="Script" path="res://scripts/movable.gd" id="2_lynos"]
-[ext_resource type="Script" path="res://scripts/mirror.gd" id="3_3wfaf"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="2_lynos"]
+[ext_resource type="Script" uid="uid://cwvnu13puq8ni" path="res://scripts/mirror.gd" id="3_3wfaf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rb1vq"]
 points = PackedVector3Array(-0.4, 0.5, 0.4, -0.4, 0.5, -0.4, 0.4, 0.5, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4)

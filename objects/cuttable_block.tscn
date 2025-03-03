@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://b4sp3lqumwuiy"]
 
-[ext_resource type="Script" path="res://scripts/movable.gd" id="1_jm06d"]
-[ext_resource type="Material" path="res://materials/cuttable_block_material.tres" id="2_clfo1"]
-[ext_resource type="Shader" path="res://materials/glow.gdshader" id="3_2m5qf"]
-[ext_resource type="Script" path="res://scripts/glow.gd" id="4_nhb2t"]
-[ext_resource type="Script" path="res://scripts/cuttable.gd" id="5_0g0gp"]
+[ext_resource type="Script" uid="uid://csajjuh881j61" path="res://scripts/movable.gd" id="1_jm06d"]
+[ext_resource type="Material" uid="uid://djp620x3miwou" path="res://materials/cuttable_block_material.tres" id="2_clfo1"]
+[ext_resource type="Shader" uid="uid://6h8bdqp6m200" path="res://materials/glow.gdshader" id="3_2m5qf"]
+[ext_resource type="Script" uid="uid://dll2a460a4pfy" path="res://scripts/glow.gd" id="4_nhb2t"]
+[ext_resource type="Script" uid="uid://da7texmvwtc0o" path="res://scripts/cuttable.gd" id="5_0g0gp"]
 [ext_resource type="PackedScene" uid="uid://dhr5f7xr2upu7" path="res://objects/technical/slant_one_sided_mirror_block.tscn" id="6_y0kda"]
 [ext_resource type="PackedScene" uid="uid://bmq68x3htg8yy" path="res://objects/technical/flat_one_sided_mirror_block.tscn" id="7_0hetd"]
 

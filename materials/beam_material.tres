@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c62cewuuemkjk"]
 
-[ext_resource type="Shader" path="res://materials/fog_laser.gdshader" id="1_hgmsh"]
+[ext_resource type="Shader" uid="uid://b6clbdq2x80vc" path="res://materials/fog_laser.gdshader" id="1_hgmsh"]
 
 [sub_resource type="Gradient" id="Gradient_0k8oi"]
 offsets = PackedFloat32Array(0.169863, 0.70137)
@@ -17,6 +17,6 @@ noise = SubResource("FastNoiseLite_w8prv")
 [resource]
 render_priority = 0
 shader = ExtResource("1_hgmsh")
+shader_parameter/noise_texture = SubResource("NoiseTexture3D_35ecg")
 shader_parameter/albedo_color = Color(0, 0, 1, 1)
 shader_parameter/wind = Vector3(0.005, 0.008, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture3D_35ecg")
