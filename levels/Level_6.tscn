@@ -1,52 +1,98 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2j1yk8v84qsq"]
+[gd_scene load_steps=9 format=3 uid="uid://b20031o78rk1r"]
 
 [ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_xlpvs"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_hbthm"]
-[ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="3_py25j"]
+[ext_resource type="PackedScene" uid="uid://wp2nd16mvwmg" path="res://objects/combiner.tscn" id="4_b4w3p"]
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="4_dq0yi"]
-[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="5_4xf8i"]
+[ext_resource type="PackedScene" uid="uid://7hi3djrx5i6v" path="res://objects/mirror_block_90.tscn" id="6_uiwx6"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="6_w3ivs"]
-[ext_resource type="PackedScene" uid="uid://c38gfk35326dg" path="res://objects/transmit_glow_block.tscn" id="7_2lr30"]
+[ext_resource type="PackedScene" uid="uid://1dt13q1plnkr" path="res://objects/decorations/corner_border.tscn" id="7_8mb4p"]
+[ext_resource type="PackedScene" uid="uid://dthk2bvne4lc0" path="res://objects/filter.tscn" id="10_opgjk"]
 
 [node name="Tutorial6" type="Node3D"]
 
 [node name="World" parent="." instance=ExtResource("1_xlpvs")]
 
 [node name="Player Block" parent="World" instance=ExtResource("2_hbthm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Combiner" parent="World" instance=ExtResource("4_b4w3p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Corner Border3" parent="World/Combiner" instance=ExtResource("7_8mb4p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.875, 0)
 
 [node name="Enivronment" type="Node3D" parent="."]
 
 [node name="Mirrors" type="Node3D" parent="Enivronment"]
 
-[node name="Mirror Block" parent="Enivronment/Mirrors" instance=ExtResource("3_py25j")]
-transform = Transform3D(0.92388, 0, -0.382684, 0, 1, 0, 0.382684, 0, 0.92388, -4, 0, -4)
-
-[node name="Mirror Block2" parent="Enivronment/Mirrors" instance=ExtResource("3_py25j")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, -4)
-
 [node name="Immovable" type="Node3D" parent="Enivronment"]
 
-[node name="Laser (Red)" parent="Enivronment/Immovable" instance=ExtResource("4_dq0yi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
-script = null
-
-[node name="Wall" parent="Enivronment/Immovable" instance=ExtResource("5_4xf8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-
-[node name="Wall2" parent="Enivronment/Immovable" instance=ExtResource("5_4xf8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
-
-[node name="Glow Block" parent="Enivronment/Immovable" instance=ExtResource("6_w3ivs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
-script = null
-metadata/objective_red = true
-metadata/objective_green = false
-
-[node name="Transmit Glow Block" parent="Enivronment/Immovable" instance=ExtResource("7_2lr30")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
-script = null
-metadata/objective_red = true
-metadata/objective_green = false
-
 [node name="Moveable" type="Node3D" parent="Enivronment"]
+
+[node name="Emitter Block" parent="." instance=ExtResource("4_dq0yi")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, -1)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/beam_red = false
+metadata/beam_blue = true
+
+[node name="Emitter Block2" parent="." instance=ExtResource("4_dq0yi")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -7, 0, 1)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+metadata/beam_red = false
+metadata/beam_green = true
+
+[node name="Emitter Block3" parent="." instance=ExtResource("4_dq0yi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, 0)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Mirror Block" parent="." instance=ExtResource("6_uiwx6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 4)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Corner Border" parent="Mirror Block" instance=ExtResource("7_8mb4p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.38419e-07, -0.875, 0)
+
+[node name="Mirror Block2" parent="." instance=ExtResource("6_uiwx6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -4)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Corner Border2" parent="Mirror Block2" instance=ExtResource("7_8mb4p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.76837e-07, -0.875, -7.15256e-07)
+
+[node name="Glow Block" parent="." instance=ExtResource("6_w3ivs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+metadata/objective_blue = true
+
+[node name="Filter" parent="." instance=ExtResource("10_opgjk")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, 0)
+metadata/transmit_red = true
+metadata/transmit_blue = false
+metadata/reflect_red = false
+metadata/reflect_blue = true
+
+[node name="Corner Border3" parent="Filter" instance=ExtResource("7_8mb4p")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -0.875, 0)
+
+[node name="Filter2" parent="." instance=ExtResource("10_opgjk")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, 0, 0)
+
+[node name="Corner Border4" parent="Filter2" instance=ExtResource("7_8mb4p")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -0.875, 0)
+
+[node name="Mirror Block5" parent="." instance=ExtResource("6_uiwx6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 0, 2)
+
+[node name="Mirror Block6" parent="." instance=ExtResource("6_uiwx6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 0, -2)
+can_move_v = false

@@ -1,14 +1,160 @@
-[gd_scene load_steps=6 format=3 uid="uid://w41wkkc5vrdv"]
+[gd_scene load_steps=31 format=3 uid="uid://w41wkkc5vrdv"]
 
 [ext_resource type="PackedScene" uid="uid://buxx8bxc0y6a8" path="res://objects/world_nodes.tscn" id="1_cpqle"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="2_bse17"]
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="3_1yipq"]
+[ext_resource type="PackedScene" uid="uid://c74inxfultjlp" path="res://objects/decorations/v_border.tscn" id="5_3e2wc"]
 [ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="5_r4x04"]
+[ext_resource type="Script" path="res://scripts/animation_controller.gd" id="6_7y8lg"]
 [ext_resource type="PackedScene" uid="uid://dcdwsnfojj4ed" path="res://objects/mirror_block_neg45.tscn" id="7_d5vb1"]
+[ext_resource type="Texture2D" uid="uid://cccxstrm1oypa" path="res://textures/quad arrows-sheet.png" id="8_osm85"]
+[ext_resource type="PackedScene" uid="uid://cjecxrn8grcvf" path="res://objects/wall.tscn" id="9_lke0t"]
+[ext_resource type="PackedScene" uid="uid://5qrpnq1ns0yq" path="res://objects/decorations/h_border.tscn" id="10_5e6lk"]
+[ext_resource type="PackedScene" uid="uid://1dt13q1plnkr" path="res://objects/decorations/corner_border.tscn" id="11_1dq4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yvyi"]
+atlas = ExtResource("8_osm85")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqsh0"]
+atlas = ExtResource("8_osm85")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7xvx"]
+atlas = ExtResource("8_osm85")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcq57"]
+atlas = ExtResource("8_osm85")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2b41"]
+atlas = ExtResource("8_osm85")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfvve"]
+atlas = ExtResource("8_osm85")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu6rd"]
+atlas = ExtResource("8_osm85")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j62y"]
+atlas = ExtResource("8_osm85")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tugy1"]
+atlas = ExtResource("8_osm85")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7gw"]
+atlas = ExtResource("8_osm85")
+region = Rect2(160, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmm07"]
+atlas = ExtResource("8_osm85")
+region = Rect2(192, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivev"]
+atlas = ExtResource("8_osm85")
+region = Rect2(224, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs8py"]
+atlas = ExtResource("8_osm85")
+region = Rect2(256, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h7ea"]
+atlas = ExtResource("8_osm85")
+region = Rect2(0, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwrnx"]
+atlas = ExtResource("8_osm85")
+region = Rect2(32, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbikj"]
+atlas = ExtResource("8_osm85")
+region = Rect2(64, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2n77"]
+atlas = ExtResource("8_osm85")
+region = Rect2(96, 11, 32, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd3w1"]
+atlas = ExtResource("8_osm85")
+region = Rect2(128, 11, 32, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7pol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yvyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqsh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7xvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcq57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2b41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfvve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu6rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j62y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tugy1")
+}],
+"loop": true,
+"name": &"can_push",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmm07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ivev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs8py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwrnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbikj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2n77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd3w1")
+}],
+"loop": true,
+"name": &"can_slide",
+"speed": 8.0
+}]
 
 [node name="Tutorial2" type="Node3D"]
 
 [node name="World" parent="." instance=ExtResource("1_cpqle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="Player Block" parent="World" instance=ExtResource("2_bse17")]
 
@@ -18,29 +164,155 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
 script = null
 
-[node name="Glow Block" parent="Enivronment" instance=ExtResource("5_r4x04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
-script = null
-metadata/objective_red = true
-metadata/objective_blue = true
-
-[node name="Mirrors" type="Node" parent="Enivronment"]
-
-[node name="Mirror Block" parent="Enivronment/Mirrors" instance=ExtResource("7_d5vb1")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4, 0, 1)
-
-[node name="Mirror Block2" parent="Enivronment/Mirrors" instance=ExtResource("7_d5vb1")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6, 0, -1)
-
-[node name="Mirror Block3" parent="Enivronment/Mirrors" instance=ExtResource("7_d5vb1")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, 0)
-
 [node name="Emitter Block" parent="Enivronment" instance=ExtResource("3_1yipq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
 metadata/beam_red = false
 metadata/beam_green = true
 
 [node name="Emitter Block2" parent="Enivronment" instance=ExtResource("3_1yipq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
 metadata/beam_red = false
 metadata/beam_blue = true
+
+[node name="Glow Block2" parent="Enivronment" instance=ExtResource("5_r4x04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
+script = null
+metadata/objective_green = false
+metadata/objective_blue = true
+
+[node name="Glow Block" parent="Enivronment" instance=ExtResource("5_r4x04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+script = null
+
+[node name="V Border" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, 2)
+
+[node name="V Border2" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, 1)
+
+[node name="V Border3" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 0.125, 0)
+
+[node name="V Border4" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, -1)
+
+[node name="V Border5" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, -2)
+
+[node name="H Border" parent="Enivronment" instance=ExtResource("10_5e6lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.875, -1)
+
+[node name="H Border2" parent="Enivronment" instance=ExtResource("10_5e6lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.875, -1)
+
+[node name="H Border3" parent="Enivronment" instance=ExtResource("10_5e6lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.875, -1)
+
+[node name="H Border4" parent="Enivronment" instance=ExtResource("10_5e6lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.875, -1)
+
+[node name="H Border5" parent="Enivronment" instance=ExtResource("10_5e6lk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.875, -1)
+
+[node name="Glow Block3" parent="Enivronment" instance=ExtResource("5_r4x04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+script = null
+metadata/objective_red = true
+metadata/objective_green = false
+
+[node name="V Border6" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, -3)
+
+[node name="V Border7" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, -4)
+
+[node name="Wall" parent="Enivronment" instance=ExtResource("9_lke0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="Wall2" parent="Enivronment" instance=ExtResource("9_lke0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="Wall3" parent="Enivronment" instance=ExtResource("9_lke0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="Wall4" parent="Enivronment" instance=ExtResource("9_lke0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="Mirrors" type="Node" parent="Enivronment"]
+
+[node name="Node3D" type="Node3D" parent="Enivronment/Mirrors"]
+script = ExtResource("6_7y8lg")
+anim_path = NodePath("Mirror Block/AnimatedSprite3D2")
+
+[node name="Mirror Block" parent="Enivronment/Mirrors/Node3D" instance=ExtResource("7_d5vb1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3, 0, -3)
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Enivronment/Mirrors/Node3D/Mirror Block"]
+transform = Transform3D(0.707107, -0.707107, 0, -3.09086e-08, -3.09086e-08, -1, 0.707107, 0.707107, -4.37114e-08, -2.38419e-07, 1, 2.38419e-07)
+rotation_order = 0
+pixel_size = 0.06
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_o7pol")
+animation = &"can_push"
+
+[node name="Node3D2" type="Node3D" parent="Enivronment/Mirrors"]
+script = ExtResource("6_7y8lg")
+anim_path = NodePath("Mirror Block3/AnimatedSprite3D")
+anim_name = "can_slide"
+
+[node name="Mirror Block3" parent="Enivronment/Mirrors/Node3D2" instance=ExtResource("7_d5vb1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -7, 0, 0)
+collision_mask = 9
+can_move_h = false
+can_push_others = false
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Enivronment/Mirrors/Node3D2/Mirror Block3"]
+transform = Transform3D(0.707107, -0.707107, 0, -3.09086e-08, -3.09086e-08, -1, 0.707107, 0.707107, -4.37114e-08, 0, 1, 0)
+rotation_order = 0
+pixel_size = 0.06
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_o7pol")
+animation = &"can_slide"
+
+[node name="Node3D3" type="Node3D" parent="Enivronment/Mirrors"]
+script = ExtResource("6_7y8lg")
+anim_path = NodePath("Mirror Block2/AnimatedSprite3D")
+anim_name = "can_slide"
+
+[node name="Mirror Block2" parent="Enivronment/Mirrors/Node3D3" instance=ExtResource("7_d5vb1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5, 0, -1)
+collision_mask = 9
+can_move_v = false
+can_push_others = false
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Enivronment/Mirrors/Node3D3/Mirror Block2"]
+transform = Transform3D(0.707107, 0.707107, 0, 3.09086e-08, -3.09086e-08, -1, -0.707107, 0.707107, -4.37114e-08, 0, 1, 0)
+rotation_order = 0
+pixel_size = 0.06
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_o7pol")
+animation = &"can_slide"
+
+[node name="Mirror Block" parent="Enivronment/Mirrors" instance=ExtResource("7_d5vb1")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 1, 0, -3)
+can_move_h = false
+can_move_v = false
+can_push_others = false
+
+[node name="Corner Border" parent="Enivronment/Mirrors/Mirror Block" instance=ExtResource("11_1dq4a")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.875, 0)
+
+[node name="V Border8" parent="Enivronment" instance=ExtResource("5_3e2wc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, -0.875, -5)

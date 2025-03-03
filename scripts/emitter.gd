@@ -4,8 +4,8 @@ class_name Emitter
 
 @export var beam_scene: PackedScene
 
-@export var max_beam_depth: int = 20
-@export var max_length: float = 100
+@export var max_beam_depth: int = 40
+@export var max_length: float = 1000
 
 var beam_holder: Node
 var needs_update: bool = true

@@ -1,14 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3rgriamiuxgj"]
+[gd_scene load_steps=14 format=3 uid="uid://b3rgriamiuxgj"]
 
 [ext_resource type="Texture2D" uid="uid://bqjdlry475jdq" path="res://textures/bg.png" id="1_gw5mv"]
 [ext_resource type="PackedScene" uid="uid://wdtsu7b21k3j" path="res://objects/player.tscn" id="1_kuxpl"]
 [ext_resource type="PackedScene" uid="uid://csgcpmpema2ta" path="res://objects/emitter.tscn" id="2_em67g"]
 [ext_resource type="PackedScene" uid="uid://0h5dr3rsftd4" path="res://objects/mirror.tscn" id="4_ed4lm"]
 [ext_resource type="PackedScene" uid="uid://c8d0jk1h1bh0r" path="res://objects/splitter.tscn" id="5_y4px1"]
-[ext_resource type="Material" uid="uid://bcpx048io8c4u" path="res://materials/off_material.tres" id="6_7ebnx"]
-[ext_resource type="Script" path="res://scripts/glow.gd" id="6_iyo05"]
 [ext_resource type="Script" path="res://scripts/spinner.gd" id="6_vheie"]
-[ext_resource type="Material" uid="uid://dsuqswa503vte" path="res://materials/on_material.tres" id="8_3wg5y"]
+[ext_resource type="PackedScene" uid="uid://bnnuj7j4mqu3n" path="res://objects/glow_block.tscn" id="8_kmpnr"]
 [ext_resource type="PackedScene" uid="uid://u1lex88s588t" path="res://objects/block.tscn" id="10_fs3bd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jq2it"]
@@ -33,11 +31,6 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_ce01x"]
 material = SubResource("StandardMaterial3D_rahd7")
 size = Vector2(40, 40)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_prb83"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hip80"]
-material = ExtResource("8_3wg5y")
 
 [node name="Node3D" type="Node3D"]
 
@@ -109,20 +102,8 @@ script = ExtResource("6_vheie")
 target = NodePath("..")
 angular_velocity = Vector3(0, 1, 0)
 
-[node name="Glow Block" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Glow Block"]
-shape = SubResource("BoxShape3D_prb83")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Glow Block"]
-mesh = SubResource("BoxMesh_hip80")
-
-[node name="Glow" type="Node" parent="Glow Block" node_paths=PackedStringArray("mesh_instance")]
-script = ExtResource("6_iyo05")
-mesh_instance = NodePath("../MeshInstance3D")
-off_material = ExtResource("6_7ebnx")
-on_material = ExtResource("8_3wg5y")
-
 [node name="Block" parent="." instance=ExtResource("10_fs3bd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.0448074, 2.29546)
+
+[node name="Glow Block" parent="." instance=ExtResource("8_kmpnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01839, 0, 2.02286)

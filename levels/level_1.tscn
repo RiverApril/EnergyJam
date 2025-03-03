@@ -173,7 +173,7 @@ texture = ExtResource("2_e4vy7")
 script = ExtResource("5_1ie6y")
 
 [node name="Block" parent="Environment/BlockController" instance=ExtResource("4_ga1bi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Environment/BlockController/Block"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
@@ -181,7 +181,7 @@ rotation_order = 0
 pixel_size = 0.06
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vetwp")
-animation = &"can_slide"
+animation = &"can_push"
 
 [node name="Mirrors" type="Node" parent="Environment"]
 
@@ -219,13 +219,13 @@ metadata/beam_red = false
 metadata/beam_blue = true
 
 [node name="Combiner" parent="Environment/Lasers" instance=ExtResource("7_j2y6i")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3, 0, -3)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3, 0, -3)
 script = null
 
 [node name="VictoryTargets" type="Node" parent="Environment"]
 
 [node name="Glow Block" parent="Environment/VictoryTargets" instance=ExtResource("5_rb8bl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 script = null
 metadata/objective_red = true
 metadata/objective_blue = true
